@@ -10,9 +10,7 @@ const Reference = () => {
 
   return (
     <main className="flex flex-col items-center justify-center bg-black text-yellow-400 w-full min-h-screen p-4">
-      <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-        Presenting The Babi
-      </h1>
+      <h1>Presenting The Babi</h1>
       <div className="lg:flex">
         <div className="flex mb-4 justify-center lg:flex-col">
           {images.map((image, index) => (

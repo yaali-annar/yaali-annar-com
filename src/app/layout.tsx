@@ -1,28 +1,20 @@
 import type { Metadata } from "next";
-import { Atkinson_Hyperlegible } from "next/font/google";
-import "./globals.css";
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
+import Body from "./body";
 
-const hyperLegible = Atkinson_Hyperlegible({
-  weight: ["400", "700"],
-  subsets: ["latin-ext"],
-});
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
 export const metadata: Metadata = {
   title: "Yaali Annar's Site",
   description: "Babi Landing Page",
 };
 
-const RootLayout = ({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) => {
-  return (
-    <html lang="en">
-      <body className={hyperLegible.className}>{children}</body>
-    </html>
-  );
-};
+const RootLayout: FC<RootLayoutProps> = ({ children }) => (
+  <html lang="en">
+    <Body>{children}</Body>
+  </html>
+);
 
 export default RootLayout;
