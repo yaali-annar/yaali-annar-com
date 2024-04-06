@@ -1,10 +1,10 @@
 import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import ReactMarkdown from "react-markdown";
 import { FC } from "react";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import MarkdownWithLatex from "@/components/markdown-with-latex";
 
 interface PageProps {
   params: { slug: string };
@@ -42,9 +42,9 @@ const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
   const { data, content } = getStaticProps(slug);
   return (
-    <article>
+    <article className="mx-auto max-w-7xl my-4">
       <h1>{data.title}</h1>
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <MarkdownWithLatex>{content}</MarkdownWithLatex>
     </article>
   );
 };

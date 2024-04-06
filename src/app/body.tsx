@@ -2,8 +2,8 @@
 
 import { Atkinson_Hyperlegible } from "next/font/google";
 import { FC, ReactNode } from "react";
-import { MathJaxContext } from "better-react-mathjax";
 
+import "katex/dist/katex.min.css";
 import "./globals.css";
 
 interface BodyProps {
@@ -16,9 +16,7 @@ const hyperLegible = Atkinson_Hyperlegible({
 });
 
 const Body: FC<BodyProps> = ({ children }) => (
-  <body className={hyperLegible.className}>
-    <MathJaxContext>{children} </MathJaxContext>
-  </body>
+  <body className={hyperLegible.className}>{children}</body>
 );
 
 export default Body;
