@@ -14,6 +14,7 @@ interface Article {
   content: string;
   data: {
     title: string;
+    description: string;
   };
 }
 
@@ -35,6 +36,10 @@ const generateMetadata = ({ params }: PageProps): Metadata => {
   const { data } = getStaticProps(slug);
   return {
     title: data.title,
+    openGraph: {
+      title: data.title,
+      description: data.description,
+    },
   };
 };
 
@@ -42,7 +47,7 @@ const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
   const { data, content } = getStaticProps(slug);
   return (
-    <article className="mx-auto max-w-7xl my-4">
+    <article className="mx-auto max-w-4xl px-4 my-4">
       <h1>{data.title}</h1>
       <MarkdownWithLatex>{content}</MarkdownWithLatex>
     </article>
