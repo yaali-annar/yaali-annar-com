@@ -1,9 +1,24 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import Link from "next/link";
+
 import Bluesky from "@/components/icon/bluesky";
 import Reference from "@/components/icon/reference";
 import Telegram from "@/components/icon/telegram";
-import Link from "next/link";
 
 const Home = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path.includes("//")) {
+      const newPath = path.replace(/\/\/+/g, "/");
+      router.replace(newPath);
+    }
+  }, [router]);
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-2">
       <img className="w-full max-w-80" src="/avatar.png" alt="avatar" />
