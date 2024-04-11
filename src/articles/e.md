@@ -51,36 +51,28 @@ $$
 \frac{n!}{(k!)(n-k)!}
 $$
 
-Now let's plug our definition for $$e$$ to the binomial expansion.
+Now let's plug our definition for $$e$$ to the binomial expansion:
 
 $$
 \begin{split}
-e &= \sum_{k=0}^{n} \lim\limits_{n \to \infty} (\frac{n!}{(k!)(n-k)!}) 1^{n-k} (\frac{1}{n})^k \\
-&= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{n!}{(k!)(n-k)!} . \frac{1}{n^k}\\
-&= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{1}{k!} . \frac{n!}{(n^k)(n-k)!}
+e &= \lim\limits_{n \to \infty} \sum_{k=0}^{n} (\frac{n!}{(k!)(n-k)!}) 1^{n-k} (\frac{1}{n})^k \\
+&= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{n!}{(k!)(n-k)!} \cdot \frac{1}{n^k}\\
+&= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{1}{k!} \cdot \frac{n!}{(n^k)(n-k)!}
 \end{split}
 $$
 
 Now, we can focus on this part of the equation:
 
 $$
-\frac{n!}{(n^k)(n-k)!} = \frac{n!}{(n-k)!} . \frac{1}{n^k}
+\frac{n!}{(n^k)(n-k)!} = \frac{n!}{(n-k)!} \cdot \frac{1}{n^k}
 $$
 
-The fraction $$\frac{n!}{(n-k)!}$$ means $$(n)(n-1)(n-2)...(n-k)$$. Since n approaches infinity, $$(n-1)$$ to $$(n-k)$$ becomes close to $$n$$.
-
-Therefore for extremely large value of n:
-
-$$
-\frac{n!}{(n-k)!} \approx n^k
-$$
-
-Let's insert $$\frac{1}{n^k}$$:
+The fraction $$\frac{n!}{(n-k)!}$$ means $$(n)(n-1)(n-2)\cdots(n-k+1)$$. Since $$n-k$$ becomes closer to $$n$$ as $$n$$ reaches infinity, then:
 
 $$
 \begin{split}
-\lim\limits_{n \to \infty} \frac{n!}{(n-k)!} . \frac{1}{n^k} &= n^k . \frac{1}{n^k}\\
-&= \frac{n^k}{n^k}\\
+\lim\limits_{n \to \infty} \frac{n!}{(n-k)!} \cdot \frac{1}{n^k} &= \lim\limits_{n \to \infty} \frac{n}{n} \cdot \frac{n-1}{n} \cdots \frac{n-k+1}{n} \\
+&= 1 \cdot 1 \cdots 1 \\
 &= 1
 \end{split}
 $$
@@ -89,11 +81,59 @@ From here we can incorporate it to our binomial expansion:
 
 $$
 \begin{split}
-e &= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{1}{k!} . \frac{n!}{(n^k)(n-k)!}\\
+e &= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{n!}{(n^k)(n-k)!} \cdot \frac{1}{k!} \\
 e &= \sum_{k=0}^{\infty} \frac{1}{k!}
 \end{split}
 $$
 
 ## Approximating $$e^x$$
+
+Getting the value of $$e$$ using binomial expansion is basically implementing a specific case of $$e^x$$ where $$x=1$$
+
+Let us try to get the approximation of $$e^x$$ then, by expanding $$\lim\limits_{n \to \infty} (1 + \frac{1}{n})^{nx}$$:
+
+$$
+\begin{split}
+e^x &= \lim\limits_{n \to \infty} \sum_{k=0}^{n} \binom{nx}{k} 1^{nx-k}(\frac{1}{n})^k \\
+&= \lim\limits_{n \to \infty} \sum_{k=0}^{n} (\frac{nx!}{(k!)(nx-k)!})(\frac{1}{n})^k \\
+&= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{nx!}{(k!)(nx-k)!} \cdot \frac{1}{n^k}\\
+&= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{1}{k!} \cdot \frac{nx!}{(n^k)(nx-k)!}
+\end{split}
+$$
+
+Just like with $$\frac{n!}{(n-k)!}$$ we can expand $$\frac{nx!}{(nx-k)!}$$ as $$n$$ approaches infinity, $$nx-k$$ becomes closer to $$nx$$:
+
+$$
+\begin{split}
+\lim\limits_{n \to \infty} \frac{nx!}{(nx-k)!} \cdot \frac{1}{n^k} &= \lim\limits_{n \to \infty} \frac{nx}{n} \cdot \frac{nx-1}{n} \cdots \frac{nx-k+1}{n} \\
+&= x \cdot x \cdots x \\
+&= x^k
+\end{split}
+$$
+
+Plugging it back to the sum, we get:
+
+$$
+\begin{split}
+e^x &= \sum_{k=0}^{n} \lim\limits_{n \to \infty} \frac{nx!}{(n^k)(nx-k)!} \cdot \frac{1}{k!} \\
+&= \sum_{k=0}^{\infty} \frac{x^k}{k!}
+\end{split}
+$$
+
+To derive $$e^x$$ we can do the following:
+
+$$
+\begin{split}
+e^x &= \sum_{k=0}^{\infty} \frac{x^k}{k!}\\
+&= \frac{x^0}{0!} + \sum_{k=1}^{\infty} \frac{x^k}{k!}\\
+&= 1 + \sum_{k=1}^{\infty} \frac{x^k}{k!}\\
+\frac{de^x}{dx} &= 0 + \sum_{k=1}^{\infty} \frac{k \cdot x^{k-1}}{k!} \\
+&= \sum_{k=1}^{\infty} \frac{x^{k-1}}{(k-1)!}\\
+&= \sum_{k=0}^{\infty} \frac{x^{k}}{k!}\\
+&= e^x
+\end{split}
+$$
+
+## Understanding Euler's Identity
 
 TODO

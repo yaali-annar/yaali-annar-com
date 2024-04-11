@@ -1,7 +1,10 @@
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import Link from "next/link";
+
 import Bluesky from "@/components/icon/bluesky";
 import Reference from "@/components/icon/reference";
 import Telegram from "@/components/icon/telegram";
-import Link from "next/link";
 
 const Home = () => {
   return (
