@@ -1,0 +1,7 @@
+.toc {
+  @apply border-yellow-600 border rounded px-3 my-3 text-yellow-600;
+}
+
+.listItem {
+  @apply my-2;
+}

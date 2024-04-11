@@ -4,8 +4,7 @@ import matter from "gray-matter";
 import { FC, useEffect } from "react";
 
 import type { Metadata, ResolvingMetadata } from "next";
-import MarkdownWithLatex from "@/components/markdown-with-latex";
-import ArticleComponent from "./component";
+import CustomMarkdown from "@/components/custom-markdown";
 
 interface PageProps {
   params: { slug: string };
@@ -48,7 +47,10 @@ const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
   const { data, content } = getStaticProps(slug);
   return (
-    <ArticleComponent {...{ content }} title={data.title}></ArticleComponent>
+    <article className="mx-auto max-w-4xl px-4 my-4">
+      <h1>{data.title}</h1>
+      <CustomMarkdown>{content}</CustomMarkdown>
+    </article>
   );
 };
 

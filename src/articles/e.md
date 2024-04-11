@@ -133,3 +133,7 @@ e^x &= \sum_{k=0}^{\infty} \frac{x^k}{k!}\\
 &= e^x
 \end{split}
 $$
+
+## Understanding Euler's Identity
+
+TODO
