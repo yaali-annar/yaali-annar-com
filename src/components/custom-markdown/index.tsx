@@ -1,54 +1,59 @@
+import { FC } from "react";
 import ReactMarkdown, { Components } from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
+import rehypeToc, { HtmlElementNode, TextNode } from "@jsdevtools/rehype-toc";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import rehypeToc from "@jsdevtools/rehype-toc";
-import rehypeSlug from "rehype-slug";
-import { FC } from "react";
 
-import style from "./styles.module.css";
+import type { Pluggable } from "unified";
+
+import { TOC_ID } from "./constants";
+import generateHeadingComponent from "./heading";
 
 interface Props {
   children: string;
 }
 
-const tocId = "table-of-contents";
+const headingComponents: Components = {
+  h2: generateHeadingComponent(2),
+  h3: generateHeadingComponent(3),
+  h4: generateHeadingComponent(4),
+  h5: generateHeadingComponent(5),
+  h6: generateHeadingComponent(6),
+};
 
-const NavComponent: Components["nav"] = ({ children }) => (
-  <nav className={style.toc}>
-    <h2 className="mt-2" id={tocId}>
-      Table of Contents
-    </h2>
-    {children}
-  </nav>
-);
+const customizeTOC = (node: HtmlElementNode) => {
+  const customizedNode = { ...node };
+  const { children } = customizedNode;
+  if (!children) {
+    return null;
+  }
+  const title: HtmlElementNode = {
+    children: [{ type: "text", value: "Table of Contents" } as TextNode],
+    properties: { class: "mb-0", id: TOC_ID },
+    tagName: "h2",
+    type: "element",
+  };
+  customizedNode.children = [title, ...children];
+  return customizedNode;
+};
 
-const H2Component: Components["h2"] = ({ children, id }) => (
-  <div id={id} className="flex justify-between">
-    <h2>{children}</h2>
-    <a className="text-yellow-600" href={`#${tocId}`}>
-      [Back]
-    </a>
-  </div>
-);
+const rehypeTocWithOptions: Pluggable = [
+  rehypeToc,
+  {
+    customizeTOC,
+    cssClasses: {
+      toc: "border-yellow-600 border rounded p-2 lg:p-4 my-3 text-yellow-600",
+    },
+  },
+];
 
 const CustomMarkdown: FC<Props> = ({ children }) => (
   <ReactMarkdown
     remarkPlugins={[remarkMath, remarkGfm]}
-    rehypePlugins={[
-      rehypeSlug,
-      [
-        rehypeToc,
-        {
-          cssClasses: { listItem: style.listItem },
-        },
-      ],
-      rehypeKatex,
-    ]}
-    components={{
-      h2: H2Component,
-      nav: NavComponent,
-    }}
+    rehypePlugins={[rehypeSlug, rehypeTocWithOptions, rehypeKatex]}
+    components={{ ...headingComponents }}
   >
     {children}
   </ReactMarkdown>

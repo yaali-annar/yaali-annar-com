@@ -1,10 +1,13 @@
-import { readdirSync, readFileSync } from "fs";
+import { FC } from "react";
 import { join } from "path";
+import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
-import { FC, useEffect } from "react";
 
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
+
 import CustomMarkdown from "@/components/custom-markdown";
+import { ARTICLES_DIR } from "@/constants/article";
+import { getArticle } from "../util";
 
 interface PageProps {
   params: { slug: string };
@@ -18,22 +21,14 @@ interface Article {
   };
 }
 
-const articlesDirectory = join(process.cwd(), "src", "articles");
-
 const generateStaticParams = () => {
-  const filenames = readdirSync(articlesDirectory);
+  const filenames = readdirSync(ARTICLES_DIR);
   return filenames.map((filename) => ({ slug: filename.replace(/\.md$/, "") }));
-};
-
-const getStaticProps = (slug: string) => {
-  const fullPath = join(articlesDirectory, `${slug}.md`);
-  const fileContents = readFileSync(fullPath, "utf8");
-  return matter(fileContents) as unknown as Article;
 };
 
 const generateMetadata = ({ params }: PageProps): Metadata => {
   const { slug } = params;
-  const { data } = getStaticProps(slug);
+  const { data } = getArticle(slug);
   return {
     title: data.title,
     openGraph: {
@@ -45,7 +40,7 @@ const generateMetadata = ({ params }: PageProps): Metadata => {
 
 const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
-  const { data, content } = getStaticProps(slug);
+  const { data, content } = getArticle(slug);
   return (
     <article className="mx-auto max-w-4xl px-4 my-4">
       <h1>{data.title}</h1>
