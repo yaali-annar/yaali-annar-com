@@ -12,7 +12,7 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({ menuItems = [] }) => {
   return (
-    <nav className="flex p-2 lg:p-3 border-b border-yellow-400 justify-between items-center">
+    <nav className="flex p-2 lg:p-3 border-b border-yellow-400 justify-between items-center mb-4 lg:mb-8">
       <Link href="/">
         <img
           className="w-8 max-w-8 lg:w-12 lg:max-w-12 mr-4"
