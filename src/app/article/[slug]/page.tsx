@@ -3,8 +3,11 @@ import { readdirSync } from "fs";
 
 import type { Metadata } from "next";
 
-import CustomMarkdown from "@/components/custom-markdown";
 import { ARTICLES_DIR } from "@/constants/article";
+import ArticleIcon from "@/components/icon/article";
+import CustomMarkdown from "@/components/custom-markdown";
+import NavBar from "@/components/navbar";
+
 import { getArticle } from "../util";
 
 interface PageProps {
@@ -36,14 +39,19 @@ const generateMetadata = ({ params }: PageProps): Metadata => {
   };
 };
 
+const menuItems = [{ children: <ArticleIcon />, href: "/article" }];
+
 const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
   const { data, content } = getArticle(slug);
   return (
-    <article className="mx-auto max-w-4xl px-4 my-4">
-      <h1>{data.title}</h1>
-      <CustomMarkdown>{content}</CustomMarkdown>
-    </article>
+    <>
+      <NavBar {...{ menuItems }} />
+      <article className="mx-auto max-w-4xl px-4 my-4">
+        <h1>{data.title}</h1>
+        <CustomMarkdown>{content}</CustomMarkdown>
+      </article>
+    </>
   );
 };
 
