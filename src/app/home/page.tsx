@@ -1,7 +1,6 @@
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import Link from "next/link";
 
+import Article from "@/components/icon/article";
 import Bluesky from "@/components/icon/bluesky";
 import Reference from "@/components/icon/reference";
 import Telegram from "@/components/icon/telegram";
@@ -20,6 +19,9 @@ const Home = () => {
         </a>
         <Link href="/reference">
           <Reference />
+        </Link>
+        <Link href="/article">
+          <Article />
         </Link>
       </div>
     </main>
