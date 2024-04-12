@@ -1,7 +1,5 @@
 import { FC } from "react";
-import { join } from "path";
-import { readdirSync, readFileSync } from "fs";
-import matter from "gray-matter";
+import { readdirSync } from "fs";
 
 import type { Metadata } from "next";
 
