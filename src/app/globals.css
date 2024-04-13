@@ -16,19 +16,30 @@ p {
 
 h1,
 h2,
-h3 {
-  @apply font-bold mb-1 lg:mb-2;
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold my-1 lg:my-2;
 }
 
 h1 {
-  @apply text-2xl lg:text-3xl;
+  @apply text-4xl lg:text-5xl;
 }
 
 h2 {
-  @apply text-xl lg:text-2xl;
+  @apply text-3xl lg:text-4xl;
 }
 
 h3 {
+  @apply text-2xl lg:text-3xl;
+}
+
+h4 {
+  @apply text-xl lg:text-2xl;
+}
+
+h5 {
   @apply text-lg lg:text-xl;
 }
 
