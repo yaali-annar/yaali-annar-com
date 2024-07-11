@@ -46,8 +46,6 @@ Focus and Aspect are combined together in semi regular fashion. In particular, n
 
 Here are the full combination of the aspect and the focus.
 
-Here are the full combination of the aspect and the focus
-
 |             | Neutral | Perfective | Contemplated | Progresive  |
 | ----------- | ------- | ---------- | ------------ | ----------- |
 | Stative     | matudur | natudur    | matutudur    | natutudur   |

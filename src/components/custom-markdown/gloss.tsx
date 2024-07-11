@@ -22,9 +22,7 @@ const Gloss: FC<GlossProps> = ({ children }) => {
     const glossContent = glossLines[0].map((_, i) => (
       <div key={i}>
         {glossLines.map((line, j) => (
-          <div key={`${j}-${i}`} className="text-center">
-            {line[i]}
-          </div>
+          <div key={`${j}-${i}`}>{line[i]}</div>
         ))}
       </div>
     ));

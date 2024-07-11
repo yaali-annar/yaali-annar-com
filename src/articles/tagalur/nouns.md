@@ -100,4 +100,9 @@ I escaped from a prison
 
 The oblique govern most other prepositions.
 
-- Gumawa i ina ka kanen ni **(untuk ki ama)** > Mom made this food for dad.
+```gloss
+Gumawa i ina ta kanen ni untuk ki ama
+@G<um>awa i ina ta kanen ni untuk ki ama
+@<ACT>make ABS mother ACC food this for OBL father
+Mom made this food for dad.
+```

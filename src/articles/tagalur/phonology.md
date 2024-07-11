@@ -40,7 +40,7 @@ Most of the sound are applied based on the etymology of the word.
   - ngalan > ngajan
 - Metatheses are reverted
   - itlog > telur
-  - isda > sedag
+  - isda > sedah
 
 #### Vowels
 
