@@ -7,11 +7,14 @@ import { ARTICLES_DIR } from "@/constants/article";
 import ArticleIcon from "@/components/icon/article";
 import CustomMarkdown from "@/components/custom-markdown";
 import NavBar from "@/components/navbar";
+import { getArticle } from "@/utils/article";
 
-import { getArticle } from "../util";
+interface Params {
+  slug: string;
+}
 
 interface PageProps {
-  params: { slug: string };
+  params: Params;
 }
 
 interface Article {
@@ -22,14 +25,22 @@ interface Article {
   };
 }
 
-const generateStaticParams = () => {
+const generateStaticParams = (): Params[] => {
   const filenames = readdirSync(ARTICLES_DIR);
   return filenames.map((filename) => ({ slug: filename.replace(/\.md$/, "") }));
 };
 
 const generateMetadata = ({ params }: PageProps): Metadata => {
   const { slug } = params;
-  const { data } = getArticle(slug);
+
+  const article = getArticle(slug);
+
+  if (!article) {
+    return {};
+  }
+
+  const { data } = article;
+
   return {
     title: data.title,
     openGraph: {
@@ -43,7 +54,13 @@ const menuItems = [{ children: <ArticleIcon />, href: "/article" }];
 
 const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
-  const { data, content } = getArticle(slug);
+  const article = getArticle(slug);
+
+  if (!article) {
+    return null;
+  }
+
+  const { data, content } = article;
   return (
     <>
       <NavBar {...{ menuItems }} />

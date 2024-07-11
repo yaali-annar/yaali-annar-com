@@ -1,11 +1,22 @@
-import { FC, ReactNode, createElement } from "react";
+import { FC, ReactNode, createElement, isValidElement } from "react";
 import { Components } from "react-markdown";
 import { TOC_ID } from "./constants";
+import Gloss from "./gloss";
 
 interface ComponentProps {
   children?: ReactNode;
   id?: string;
 }
+
+const PreComponent: FC<ComponentProps> = ({ children }) => {
+  if (isValidElement(children)) {
+    const { className, children: code } = children.props;
+    if (className === "language-gloss" && typeof code === "string") {
+      return <Gloss>{code}</Gloss>;
+    }
+  }
+  return <pre>{children}</pre>;
+};
 
 const UlComponent: FC<ComponentProps> = ({ children }) => (
   <ul className="list-disc pl-4">{children}</ul>
@@ -23,6 +34,10 @@ const TdComponent: FC<ComponentProps> = ({ children }) => (
 
 const ThComponent: FC<ComponentProps> = ({ children }) => (
   <th className="px-3 py-1">{children}</th>
+);
+
+const AComponent: FC<ComponentProps> = (props) => (
+  <a className="text-black bg-yellow-400 px-2 rounded-full" {...props} />
 );
 
 const generateHeadingComponent = (level: number) => {
@@ -49,12 +64,14 @@ const generateHeadingComponent = (level: number) => {
 };
 
 const components: Components = {
+  a: AComponent,
   h2: generateHeadingComponent(2),
   h3: generateHeadingComponent(3),
   h4: generateHeadingComponent(4),
   h5: generateHeadingComponent(5),
   h6: generateHeadingComponent(6),
   ul: UlComponent,
+  pre: PreComponent,
   table: TableComponent,
   td: TdComponent,
   th: ThComponent,
