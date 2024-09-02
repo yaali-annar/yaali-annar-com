@@ -1,8 +1,8 @@
 import {
   AnchorHTMLAttributes,
-  ClassAttributes,
   FC,
-  ReactNode,
+  HTMLAttributes,
+  PropsWithChildren,
   createElement,
   isValidElement,
 } from "react";
@@ -10,12 +10,7 @@ import { Components } from "react-markdown";
 import { TOC_ID } from "./constants";
 import Gloss from "./gloss";
 
-interface ComponentProps {
-  children?: ReactNode;
-  id?: string;
-}
-
-const PreComponent: FC<ComponentProps> = ({ children }) => {
+const PreComponent: FC<PropsWithChildren<{}>> = ({ children }) => {
   if (isValidElement(children)) {
     const { className, children: code } = children.props;
     if (className === "language-gloss" && typeof code === "string") {
@@ -25,21 +20,21 @@ const PreComponent: FC<ComponentProps> = ({ children }) => {
   return <pre>{children}</pre>;
 };
 
-const UlComponent: FC<ComponentProps> = ({ children }) => (
+const UlComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
   <ul className="list-disc pl-4">{children}</ul>
 );
 
-const TableComponent: FC<ComponentProps> = ({ children }) => (
+const TableComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
   <div className="border-colapse border border-yellow-400 rounded my-2 lg:my-4 inline-block overflow-x-auto max-w-full">
     <table>{children}</table>
   </div>
 );
 
-const TdComponent: FC<ComponentProps> = ({ children }) => (
+const TdComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
   <td className="px-3 py-1">{children}</td>
 );
 
-const ThComponent: FC<ComponentProps> = ({ children }) => (
+const ThComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
   <th className="px-3 py-1">{children}</th>
 );
 
@@ -55,7 +50,10 @@ const AComponent: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
 const generateHeadingComponent = (level: number) => {
   const safeLevel = Math.max(1, Math.min(level, 6));
   const HeadingTag = `h${safeLevel}` as keyof JSX.IntrinsicElements;
-  const HeadingComponent: FC<ComponentProps> = ({ children, id }) => (
+  const HeadingComponent: FC<HTMLAttributes<HTMLHeadingElement>> = ({
+    children,
+    id,
+  }) => (
     <>
       <div id={id} className="flex justify-between items-center">
         {createElement(HeadingTag, {}, children)}
