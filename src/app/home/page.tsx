@@ -4,6 +4,7 @@ import Article from "@/components/icon/article";
 import Bluesky from "@/components/icon/bluesky";
 import Reference from "@/components/icon/reference";
 import Telegram from "@/components/icon/telegram";
+import Utility from "@/components/icon/utility";
 
 const Home = () => {
   return (
@@ -22,6 +23,9 @@ const Home = () => {
         </Link>
         <Link href="/article">
           <Article />
+        </Link>
+        <Link href="/utility">
+          <Utility />
         </Link>
       </div>
     </main>
