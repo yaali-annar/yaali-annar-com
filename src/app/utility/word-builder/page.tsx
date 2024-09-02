@@ -1,12 +1,11 @@
 "use client";
 
-import { countCharacterFrequency } from "@/utils/letter-frequency";
+import NavBar from "@/components/navbar";
 import { buildWord, compileRule } from "@/utils/word-builder";
 import Head from "next/head";
 import { useState } from "react";
 
-const defaultInput = `
-C=p,t,k,m,n,ŋ,f,s,h,r,y,w
+const defaultInput = `C=p,t,k,m,n,ŋ,f,s,h,r,y,w
 V=e,o,a
 F=<V>(<C>,0-5)
 word=(<F>,0-5)<C><F><C><F>(<C><F>,0-5)`;
@@ -26,27 +25,32 @@ const WordBuilder = () => {
   };
 
   return (
-    <main>
+    <>
       <Head>
         <title>Word Builder</title>
       </Head>
       <h1>Word Builder</h1>
-      <div className="flex">
+      <p>
+        This utility allows you to generate words based on a custom regular
+        grammar rule set. You can define consonants, vowels, and specific
+        patterns to create unique words. Adjust the rules in the input area,
+        click &#34;Build Words&#34;, and see the generated output in the
+        adjacent area.
+      </p>
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
         <textarea
-          className="textarea bg-black text-yellow-400 p-4 rounded border border-yellow-400"
           cols={40}
           rows={20}
           placeholder="Enter text here..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         ></textarea>
-        <div className="p-4">
+        <div>
           <button className="btn btn-primary" onClick={buildWords}>
             Build Words
           </button>
         </div>
         <textarea
-          className="textarea bg-black text-yellow-400 p-4 rounded border border-yellow-400"
           readOnly
           cols={40}
           rows={20}
@@ -54,7 +58,7 @@ const WordBuilder = () => {
           placeholder="Output will appear here..."
         ></textarea>
       </div>
-    </main>
+    </>
   );
 };
 

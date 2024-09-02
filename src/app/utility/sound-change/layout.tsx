@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Page from "./page";
 
 export const metadata: Metadata = {
-  title: "Word Builder",
+  title: "Sound Changer",
 };
+
 export default Page;

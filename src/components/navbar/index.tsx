@@ -1,16 +1,8 @@
 import Link from "next/link";
 import { FC, ReactNode } from "react";
+import { menu } from "./data";
 
-interface MenuItem {
-  children: ReactNode;
-  href: string;
-}
-
-interface NavBarProps {
-  menuItems?: MenuItem[];
-}
-
-const NavBar: FC<NavBarProps> = ({ menuItems = [] }) => {
+const NavBar: FC = () => {
   return (
     <nav className="flex p-2 lg:p-3 border-b border-yellow-400 justify-between items-center mb-4 lg:mb-8">
       <Link href="/">
@@ -20,9 +12,11 @@ const NavBar: FC<NavBarProps> = ({ menuItems = [] }) => {
           alt="avatar"
         />
       </Link>
-      <div>
-        {menuItems.map((props, index) => (
-          <Link key={index} {...props} />
+      <div className="flex gap-4">
+        {menu.map(({ label, href }) => (
+          <Link key={href} href={href}>
+            {label}
+          </Link>
         ))}
       </div>
     </nav>
