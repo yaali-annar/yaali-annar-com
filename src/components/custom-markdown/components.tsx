@@ -1,4 +1,11 @@
-import { FC, ReactNode, createElement, isValidElement } from "react";
+import {
+  AnchorHTMLAttributes,
+  ClassAttributes,
+  FC,
+  ReactNode,
+  createElement,
+  isValidElement,
+} from "react";
 import { Components } from "react-markdown";
 import { TOC_ID } from "./constants";
 import Gloss from "./gloss";
@@ -6,7 +13,6 @@ import Gloss from "./gloss";
 interface ComponentProps {
   children?: ReactNode;
   id?: string;
-  href?: string;
 }
 
 const PreComponent: FC<ComponentProps> = ({ children }) => {
@@ -37,7 +43,10 @@ const ThComponent: FC<ComponentProps> = ({ children }) => (
   <th className="px-3 py-1">{children}</th>
 );
 
-const AComponent: FC<ComponentProps> = ({ children = "", href = "" }) => (
+const AComponent: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
+  children = "",
+  href = "",
+}) => (
   <a className="text-black bg-yellow-400 px-2 rounded-full" href={href}>
     {children}
   </a>
