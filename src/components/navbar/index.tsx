@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import { menu } from "./data";
 
 const NavBar: FC = () => {
@@ -13,7 +13,7 @@ const NavBar: FC = () => {
         />
       </Link>
       <div className="flex gap-4">
-        {menu.map(({ label, href }) => (
+        {menu.map(({ label, href = "" }) => (
           <Link key={href} href={href}>
             {label}
           </Link>
