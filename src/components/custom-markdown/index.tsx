@@ -14,6 +14,7 @@ interface Props {
 
 const CustomMarkdown: FC<Props> = ({ children }) => (
   <ReactMarkdown
+    className="space-y-2 lg:space-y-3"
     remarkPlugins={[remarkMath, remarkGfm]}
     rehypePlugins={[rehypeSlug, rehypeTocWithOptions, rehypeKatex]}
     {...{ components }}

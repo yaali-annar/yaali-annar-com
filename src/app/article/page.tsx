@@ -1,10 +1,11 @@
 import { FC } from "react";
-import { getArticles } from "./util";
 import Link from "next/link";
 import NavBar from "@/components/navbar";
+import { getArticles } from "@/utils/article";
+
+const articles = getArticles();
 
 const Articles: FC = () => {
-  const articles = getArticles();
   return (
     <>
       <NavBar />

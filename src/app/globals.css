@@ -10,17 +10,13 @@ main {
   @apply max-w-[960px] mx-auto px-4 py-4 lg:py-8;
 }
 
-p {
-  @apply my-1 lg:my-2;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  @apply font-bold my-1 lg:my-2;
+  @apply font-bold;
 }
 
 h1 {

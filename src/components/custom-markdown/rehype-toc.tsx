@@ -30,6 +30,7 @@ const customizeTOC = (node: HtmlElementNode) => {
     tagName: "h2",
     type: "element",
   };
+
   customizedNode.children = [title, ...children];
   return customizedNode;
 };
