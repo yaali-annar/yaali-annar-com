@@ -6,6 +6,7 @@ import Gloss from "./gloss";
 interface ComponentProps {
   children?: ReactNode;
   id?: string;
+  href?: string;
 }
 
 const PreComponent: FC<ComponentProps> = ({ children }) => {
@@ -36,8 +37,10 @@ const ThComponent: FC<ComponentProps> = ({ children }) => (
   <th className="px-3 py-1">{children}</th>
 );
 
-const AComponent: FC<ComponentProps> = (props) => (
-  <a className="text-black bg-yellow-400 px-2 rounded-full" {...props} />
+const AComponent: FC<ComponentProps> = ({ children = "", href = "" }) => (
+  <a className="text-black bg-yellow-400 px-2 rounded-full" href={href}>
+    {children}
+  </a>
 );
 
 const generateHeadingComponent = (level: number) => {
