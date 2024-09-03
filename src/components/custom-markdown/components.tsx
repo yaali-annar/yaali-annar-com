@@ -38,14 +38,14 @@ const ThComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
   <th className="px-3 py-1">{children}</th>
 );
 
-// const AComponent: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
-//   children = "",
-//   href = "",
-// }) => (
-//   <a className="text-black bg-yellow-400 px-2 rounded-full" href={href}>
-//     {children}
-//   </a>
-// );
+const AComponent: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
+  children = "",
+  href = "",
+}) => (
+  <a className="text-black bg-yellow-400 px-2 rounded-full" href={href}>
+    {children}
+  </a>
+);
 
 const generateHeadingComponent = (level: number) => {
   const safeLevel = Math.max(1, Math.min(level, 6));
@@ -74,7 +74,7 @@ const generateHeadingComponent = (level: number) => {
 };
 
 const components: Components = {
-  //a: AComponent,
+  a: AComponent,
   h2: generateHeadingComponent(2),
   h3: generateHeadingComponent(3),
   h4: generateHeadingComponent(4),
