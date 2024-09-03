@@ -4,7 +4,6 @@ import { readdirSync } from "fs";
 import type { Metadata } from "next";
 
 import { ARTICLES_DIR } from "@/constants/article";
-import ArticleIcon from "@/components/icon/article";
 import CustomMarkdown from "@/components/custom-markdown";
 import NavBar from "@/components/navbar";
 import { getArticle } from "@/utils/article";
@@ -50,8 +49,6 @@ const generateMetadata = ({ params }: PageProps): Metadata => {
   };
 };
 
-const menuItems = [{ children: <ArticleIcon />, href: "/article" }];
-
 const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
   const article = getArticle(slug);
@@ -63,7 +60,7 @@ const Article: FC<PageProps> = ({ params }) => {
   const { data, content } = article;
   return (
     <>
-      <NavBar {...{ menuItems }} />
+      <NavBar />
       <article className="mx-auto max-w-4xl px-4 my-4">
         <h1>{data.title}</h1>
         <CustomMarkdown>{content}</CustomMarkdown>

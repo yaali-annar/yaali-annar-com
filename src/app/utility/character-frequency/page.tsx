@@ -4,35 +4,42 @@ import { countCharacterFrequency } from "@/utils/letter-frequency";
 import Head from "next/head";
 import { useState } from "react";
 
-const HomePage = () => {
+const CharacterFrequency = () => {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");
 
   const handleCalculateFrequency = () => {
     const frequency = countCharacterFrequency(input);
+
     const formattedOutput = Object.entries(frequency)
       .sort(([, countA], [, countB]) => countB - countA)
       .map(([character, count]) => `${character}\t${count}`)
       .join("\n");
+
     setOutput(formattedOutput);
   };
 
   return (
-    <main>
+    <>
       <Head>
         <title>Character Frequency</title>
       </Head>
       <h1>Character Frequency Analysis</h1>
-      <div className="flex">
+      <p>
+        This tool analyzes the frequency of each character in your input text.
+        Simply enter the text you want to analyze, click &#34;Calculate
+        Frequency&#34; and the output will display a list of characters along
+        with their respective counts, sorted from most to least frequent.
+      </p>
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
         <textarea
-          className="textarea bg-black text-yellow-400 p-4 rounded border border-yellow-400"
           cols={40}
           rows={20}
           placeholder="Enter text here..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         ></textarea>
-        <div className="p-4">
+        <div>
           <button
             className="btn btn-primary"
             onClick={handleCalculateFrequency}
@@ -41,7 +48,6 @@ const HomePage = () => {
           </button>
         </div>
         <textarea
-          className="textarea bg-black text-yellow-400 p-4 rounded border border-yellow-400"
           readOnly
           cols={40}
           rows={20}
@@ -49,8 +55,8 @@ const HomePage = () => {
           placeholder="Output will appear here..."
         ></textarea>
       </div>
-    </main>
+    </>
   );
 };
 
-export default HomePage;
+export default CharacterFrequency;

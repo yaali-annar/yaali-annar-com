@@ -6,10 +6,6 @@ body {
   @apply bg-black text-yellow-400 w-full min-h-screen;
 }
 
-main {
-  @apply max-w-[960px] mx-auto px-4 py-4 lg:py-8;
-}
-
 h1,
 h2,
 h3,
@@ -20,23 +16,35 @@ h6 {
 }
 
 h1 {
-  @apply text-4xl lg:text-5xl;
-}
-
-h2 {
   @apply text-3xl lg:text-4xl;
 }
 
-h3 {
+h2 {
   @apply text-2xl lg:text-3xl;
 }
 
-h4 {
+h3 {
   @apply text-xl lg:text-2xl;
 }
 
-h5 {
+h4 {
   @apply text-lg lg:text-xl;
+}
+
+main {
+  @apply max-w-[960px] mx-auto px-4;
+}
+
+textarea {
+  @apply bg-black text-yellow-400 p-4 rounded border border-yellow-400;
+}
+
+.btn {
+  @apply rounded p-2;
+}
+
+.btn-primary {
+  @apply bg-yellow-400 text-black;
 }
 
 .katex-display {
