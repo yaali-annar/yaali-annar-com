@@ -12,8 +12,9 @@ import { buildWord, compileRule } from "@/utils/word-builder";
 import { countCharacterFrequency } from "@/utils/letter-frequency";
 
 interface Values {
-  rules: string,
   changes: string,
+  emptyMarker: string,
+  rules: string,
 }
 
 const defaultValues: Values = {
@@ -28,7 +29,8 @@ iyi	i
 iy(<C>|$)	i$1
 uwu	u
 (<C>|^)wu	$1u
-uw(<C>|$)	u$1`
+uw(<C>|$)	u$1`,
+  emptyMarker: '-'
 }
 
 const textareaProps = {
@@ -40,9 +42,9 @@ const WordBuilder = () => {
   const methods = useForm<Values>()
   const [output, setOutput] = useState<string>("");
 
-  const onSubmit: SubmitHandler<Values> = ({ rules, changes }) => {
+  const onSubmit: SubmitHandler<Values> = ({ changes, emptyMarker, rules }) => {
     const rule = compileRule(rules);
-    const changesArray = parseChanges(changes);
+    const changesArray = parseChanges(changes, emptyMarker);
 
     const newOutput = [];
     for (let index = 0; index < 1000; index++) {
@@ -96,7 +98,12 @@ const WordBuilder = () => {
               />
             </div>
           </div>
-          <div>
+          <div className="flex gap-4 lg:gap-6 items-center">
+            <label>Empty Marker</label>
+            <select defaultValue={defaultValues.emptyMarker} {...methods.register("emptyMarker")}>
+              <option value="-">-</option>
+              <option value="0">0</option>
+            </select>
             <input type="submit" className="btn btn-primary" />
           </div>
           <div className="flex gap-4 lg:gap-6">
