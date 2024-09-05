@@ -1,28 +1,67 @@
 "use client";
 
-import NavBar from "@/components/navbar";
-import { buildWord, compileRule } from "@/utils/word-builder";
-import Head from "next/head";
-import { useState } from "react";
 
-const defaultInput = `C=p,t,k,m,n,ŋ,f,s,h,r,y,w
-V=e,o,a
+import { useMemo, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import Head from "next/head";
+import type { SubmitHandler } from "react-hook-form";
+
+import TextArea from "@/components/text-area";
+import { applyChanges, parseChanges } from "@/utils/sound-change";
+import { buildWord, compileRule } from "@/utils/word-builder";
+import { countCharacterFrequency } from "@/utils/letter-frequency";
+
+interface Values {
+  changes: string,
+  emptyMarker: string,
+  rules: string,
+}
+
+const defaultValues: Values = {
+  rules: `C=p,t,k,m,n,ŋ,f,s,h,r,i,u
+V=a,i,u,e
 F=<V>(<C>,0-5)
-word=(<F>,0-5)<C><F><C><F>(<C><F>,0-5)`;
+word=(<F>,0-5)<C><F><C><F>(<C><F>,0-5)`,
+  changes: `V=[aiue]
+C=[^aiue]
+iyi	i
+(<C>|^)yi	$1i
+iy(<C>|$)	i$1
+uwu	u
+(<C>|^)wu	$1u
+uw(<C>|$)	u$1`,
+  emptyMarker: '-'
+}
+
+const textareaProps = {
+  rows: 10,
+  cols: 50,
+};
 
 const WordBuilder = () => {
-  const [input, setInput] = useState<string>(defaultInput);
+  const methods = useForm<Values>()
   const [output, setOutput] = useState<string>("");
 
-  const buildWords = () => {
-    const rule = compileRule(input);
+  const onSubmit: SubmitHandler<Values> = ({ changes, emptyMarker, rules }) => {
+    const rule = compileRule(rules);
+    const changesArray = parseChanges(changes, emptyMarker);
 
     const newOutput = [];
     for (let index = 0; index < 1000; index++) {
-      newOutput.push(buildWord(rule));
+      let word = buildWord(rule)
+      word = applyChanges(word, changesArray);
+      newOutput.push(word);
     }
-    setOutput(newOutput.join(`\n`));
+
+    setOutput(newOutput.join("\n"));
   };
+
+  const frequency = useMemo(() => {
+    const characterFrequency = countCharacterFrequency(output);
+    return Object.entries(characterFrequency)
+      .map(([key, value]) => `${key}\t${value}`)
+      .join("\n");
+  }, [output]);
 
   return (
     <>
@@ -37,27 +76,48 @@ const WordBuilder = () => {
         click &#34;Build Words&#34;, and see the generated output in the
         adjacent area.
       </p>
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
-        <textarea
-          cols={40}
-          rows={20}
-          placeholder="Enter text here..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        ></textarea>
-        <div>
-          <button className="btn btn-primary" onClick={buildWords}>
-            Build Words
-          </button>
-        </div>
-        <textarea
-          readOnly
-          cols={40}
-          rows={20}
-          value={output}
-          placeholder="Output will appear here..."
-        ></textarea>
-      </div>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-4 lg:gap-6">
+          <div className="flex gap-4 lg:gap-6">
+            <div>
+              <label>Rules</label>
+              <TextArea
+                allowTab
+                defaultValue={defaultValues.rules}
+                name="rules"
+                {...textareaProps}
+              />
+            </div>
+            <div>
+              <label>Input Text</label>
+              <TextArea
+                allowTab
+                defaultValue={defaultValues.changes}
+                name="changes"
+                {...textareaProps}
+              />
+            </div>
+          </div>
+          <div className="flex gap-4 lg:gap-6 items-center">
+            <label>Empty Marker</label>
+            <select defaultValue={defaultValues.emptyMarker} {...methods.register("emptyMarker")}>
+              <option value="-">-</option>
+              <option value="0">0</option>
+            </select>
+            <input type="submit" className="btn btn-primary" />
+          </div>
+          <div className="flex gap-4 lg:gap-6">
+            <div>
+              <label>Output Text</label>
+              <textarea {...textareaProps} value={output} readOnly />
+            </div>
+            <div>
+              <label>Letter Frequency</label>
+              <textarea {...textareaProps} value={frequency} readOnly />
+            </div>
+          </div>
+        </form>
+      </FormProvider>
     </>
   );
 };

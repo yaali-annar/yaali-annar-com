@@ -1,14 +1,25 @@
 "use client";
 
-import { countCharacterFrequency } from "@/utils/letter-frequency";
-import Head from "next/head";
 import { useState } from "react";
+import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
+import Head from "next/head";
+
+import TextArea from "@/components/text-area";
+import { countCharacterFrequency } from "@/utils/letter-frequency";
+
+
+interface Values {
+  input: string,
+}
+
+const textAreaProps = { cols: 40, rows: 20 }
 
 const CharacterFrequency = () => {
-  const [input, setInput] = useState<string>("");
+  const methods = useForm<Values>()
+
   const [output, setOutput] = useState<string>("");
 
-  const handleCalculateFrequency = () => {
+  const onSubmit: SubmitHandler<Values> = ({ input }) => {
     const frequency = countCharacterFrequency(input);
 
     const formattedOutput = Object.entries(frequency)
@@ -31,30 +42,24 @@ const CharacterFrequency = () => {
         Frequency&#34; and the output will display a list of characters along
         with their respective counts, sorted from most to least frequent.
       </p>
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
-        <textarea
-          cols={40}
-          rows={20}
-          placeholder="Enter text here..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        ></textarea>
-        <div>
-          <button
-            className="btn btn-primary"
-            onClick={handleCalculateFrequency}
-          >
-            Calculate Frequency
-          </button>
-        </div>
-        <textarea
-          readOnly
-          cols={40}
-          rows={20}
-          value={output}
-          placeholder="Output will appear here..."
-        ></textarea>
-      </div>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col lg:flex-row gap-4 lg:gap-6">
+          <TextArea
+            {...textAreaProps}
+            placeholder="Enter text here..."
+            name="input" />
+          <div>
+            <input type="submit"
+              className="btn btn-primary"
+            />
+          </div>
+          <TextArea
+            readOnly
+            {...textAreaProps}
+            value={output}
+          />
+        </form>
+      </FormProvider>
     </>
   );
 };

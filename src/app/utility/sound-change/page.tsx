@@ -1,39 +1,45 @@
 "use client";
 
+import { FormProvider, useForm } from "react-hook-form"
+import { useMemo, useState } from "react";
+
+import type { FC } from "react";
+import type { SubmitHandler } from "react-hook-form"
+
 import TextArea from "@/components/text-area";
 import { countCharacterFrequency } from "@/utils/letter-frequency";
 import { applyChanges, parseChanges } from "@/utils/sound-change";
-import { ChangeEvent, FC, useMemo, useState } from "react";
+
+interface Values {
+  input: string,
+  changes: string,
+  emptyMarker: string,
+}
+
+const defaultValues: Values = {
+  input: `kiki
+bobo`,
+  changes: `V=[aeiou]
+C=[^aeiou]
+(<C>)(<V>)	$2$1`,
+  emptyMarker: '-'
+}
 
 const textareaProps = {
   rows: 10,
   cols: 50,
 };
 
-const defaultInput = `kiki
-bobo`;
-
-const defaultChanges = `V=[aeiou]
-C=[^aeiou]
-(<C>)(<V>)	$2$1`;
-
 const SoundChange: FC = () => {
-  const [changes, setChanges] = useState<string>(defaultChanges);
-  const [input, setInput] = useState<string>(defaultInput);
+  const methods = useForm<Values>()
   const [output, setOutput] = useState<string>("");
 
-  const handleChangesInput = (e: ChangeEvent<HTMLTextAreaElement>) =>
-    setChanges(e.target.value);
-
-  const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) =>
-    setInput(e.target.value);
-
-  const apply = () => {
-    const changesArray = parseChanges(changes);
+  const onSubmit: SubmitHandler<Values> = ({ changes, emptyMarker, input }) => {
+    const changesArray = parseChanges(changes, emptyMarker);
     const newOutput = input
       .split(/[\n\r]+/)
       .map((line) => applyChanges(line, changesArray))
-      .join(`\n`);
+      .join("\n");
     setOutput(newOutput);
   };
 
@@ -41,8 +47,10 @@ const SoundChange: FC = () => {
     const characterFrequency = countCharacterFrequency(output);
     return Object.entries(characterFrequency)
       .map(([key, value]) => `${key}\t${value}`)
-      .join(`\n`);
+      .join("\n");
   }, [output]);
+
+  console.log({ input: methods.watch("input") })
 
   return (
     <>
@@ -57,43 +65,48 @@ const SoundChange: FC = () => {
         After applying the changes, the transformed text will be displayed,
         along with a frequency analysis of the characters in the output.
       </p>
-      <div className="flex flex-col gap-4 lg:gap-6">
-        <div className="flex gap-4 lg:gap-6">
-          <div>
-            <label>Changes</label>
-            <TextArea
-              allowTab
-              {...textareaProps}
-              value={changes}
-              onChange={handleChangesInput}
-            />
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-4 lg:gap-6">
+          <div className="flex gap-4 lg:gap-6">
+            <div>
+              <label>Changes</label>
+              <TextArea
+                allowTab
+                defaultValue={defaultValues.input}
+                name="input"
+                {...textareaProps}
+              />
+            </div>
+            <div>
+              <label>Input Text</label>
+              <TextArea
+                allowTab
+                defaultValue={defaultValues.changes}
+                name="changes"
+                {...textareaProps}
+              />
+            </div>
           </div>
-          <div>
-            <label>Input Text</label>
-            <TextArea
-              allowTab
-              {...textareaProps}
-              value={input}
-              onChange={handleInput}
-            />
+          <div className="flex gap-4 lg:gap-6 items-center">
+            <label>Empty Marker</label>
+            <select defaultValue={defaultValues.emptyMarker} {...methods.register("emptyMarker")}>
+              <option value="-">-</option>
+              <option value="0">0</option>
+            </select>
+            <input type="submit" className="btn btn-primary" />
           </div>
-        </div>
-        <div>
-          <button className="btn btn-primary" onClick={apply}>
-            Apply
-          </button>
-        </div>
-        <div className="flex gap-4 lg:gap-6">
-          <div>
-            <label>Output Text</label>
-            <textarea {...textareaProps} value={output} readOnly />
+          <div className="flex gap-4 lg:gap-6">
+            <div>
+              <label>Output Text</label>
+              <textarea {...textareaProps} value={output} readOnly />
+            </div>
+            <div>
+              <label>Letter Frequency</label>
+              <textarea {...textareaProps} value={frequency} readOnly />
+            </div>
           </div>
-          <div>
-            <label>Letter Frequency</label>
-            <textarea {...textareaProps} value={frequency} readOnly />
-          </div>
-        </div>
-      </div>
+        </form>
+      </FormProvider>
     </>
   );
 };

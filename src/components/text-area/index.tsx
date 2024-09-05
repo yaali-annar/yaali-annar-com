@@ -1,10 +1,12 @@
-import { ChangeEvent, FC, KeyboardEvent, TextareaHTMLAttributes } from "react";
+import type { ChangeEvent, FC, KeyboardEvent, Ref, TextareaHTMLAttributes } from "react";
+import { useFormContext } from "react-hook-form";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   allowTab?: boolean;
 }
 
-const TextArea: FC<TextAreaProps> = ({ allowTab, ...props }) => {
+const TextArea: FC<TextAreaProps> = ({ allowTab, name, ...props }) => {
+  const { register } = useFormContext() // retrieve all hook methods
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Tab" && allowTab) {
       event.preventDefault(); // Prevent the default focus change
@@ -32,8 +34,8 @@ const TextArea: FC<TextAreaProps> = ({ allowTab, ...props }) => {
       }
     }
   };
-
-  return <textarea {...props} onKeyDown={handleKeyDown} />;
+  const registeredProps = name ? register(name) : {}
+  return <textarea {...props} {...registeredProps} onKeyDown={handleKeyDown} />;
 };
 
 export default TextArea;

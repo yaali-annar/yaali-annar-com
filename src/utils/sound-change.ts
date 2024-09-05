@@ -6,44 +6,46 @@ interface Change {
 const applyChanges = (input: string, changes: Change[]): string => {
   let output = input;
 
-  changes.forEach(({ regex, stringTransformation }) => {
+  for (const { regex, stringTransformation } of changes) {
     output = output.replace(regex, stringTransformation);
-  });
+  }
 
   return output;
 };
 
-const parseChanges = (changesString: string): Change[] => {
+const parseChanges = (changesString: string, emptyMarker: string): Change[] => {
   const lines = changesString.split("\n");
   const variables: Record<string, string> = {};
   const changes: Change[] = [];
 
-  lines.forEach((line) => {
+  for (let line of lines) {
     // Trim to remove extra spaces and ignore empty lines or comments
     line = line.trim();
     if (line === "" || line.startsWith("#")) {
-      return;
+      continue;
     }
 
     // Check for variable definitions
     if (line.includes("=") && !line.includes("\t")) {
       const [variableName, value] = line.split("=");
       variables[variableName.trim()] = value.trim();
-      return;
+      continue;
     }
 
     // Parse regex and transformations, replacing variables
-    const [regex, stringTransformation] = line.split("\t");
+    let [regex, stringTransformation] = line.split("\t");
     const resolvedRegex = regex.replace(/<(\w+)>/g, (_, varName) => {
       // Replace variable placeholder with actual value
       return variables[varName] || `<${varName}>`; // Return unresolved variables as they were if not found
     });
 
+    stringTransformation = stringTransformation.replaceAll(emptyMarker, "");
+
     changes.push({
       regex: new RegExp(resolvedRegex, "g"), // Using global flag for replacements
       stringTransformation,
     });
-  });
+  }
 
   return changes;
 };
