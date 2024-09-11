@@ -1,6 +1,8 @@
 ---
 title: "Prime and 24"
 description: "Relationship Between Prime Numbers and 24."
+tags:
+  - math
 ---
 
 The square of any prime number greater than 3 has an intriguing property: it is always one more than a multiple of 24. This characteristic can be a handy tool for preliminary checks when identifying prime numbers, although additional verification is still required.

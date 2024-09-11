@@ -1,6 +1,8 @@
 ---
 title: "The constant known as e"
 description: "Explanation about what is the Euler's number and how to calculate it."
+tags:
+  - math
 ---
 
 What is $$e$$?
