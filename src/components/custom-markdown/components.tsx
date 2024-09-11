@@ -1,16 +1,20 @@
 import {
-  AnchorHTMLAttributes,
-  FC,
-  HTMLAttributes,
-  PropsWithChildren,
   createElement,
   isValidElement,
 } from "react";
-import { Components } from "react-markdown";
+import type {
+  AnchorHTMLAttributes,
+  FC,
+  HTMLAttributes,
+  TableHTMLAttributes,
+  TdHTMLAttributes,
+  ThHTMLAttributes,
+} from "react";
+import type { Components } from "react-markdown";
 import { TOC_ID } from "./constants";
 import Gloss from "./gloss";
 
-const PreComponent: FC<PropsWithChildren<{}>> = ({ children }) => {
+const PreComponent: FC<HTMLAttributes<HTMLPreElement>> = ({ children }) => {
   if (isValidElement(children)) {
     const { className, children: code } = children.props;
     if (className === "language-gloss" && typeof code === "string") {
@@ -20,21 +24,21 @@ const PreComponent: FC<PropsWithChildren<{}>> = ({ children }) => {
   return <pre>{children}</pre>;
 };
 
-const UlComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
+const UlComponent: FC<HTMLAttributes<HTMLUListElement>> = ({ children }) => (
   <ul className="list-disc pl-4">{children}</ul>
 );
 
-const TableComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
+const TableComponent: FC<TableHTMLAttributes<HTMLTableElement>> = ({ children }) => (
   <div className="border-colapse border border-yellow-400 rounded my-2 lg:my-4 inline-block overflow-x-auto max-w-full">
     <table>{children}</table>
   </div>
 );
 
-const TdComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
+const TdComponent: FC<TdHTMLAttributes<HTMLTableCellElement>> = ({ children }) => (
   <td className="px-3 py-1">{children}</td>
 );
 
-const ThComponent: FC<PropsWithChildren<{}>> = ({ children }) => (
+const ThComponent: FC<ThHTMLAttributes<HTMLTableCellElement>> = ({ children }) => (
   <th className="px-3 py-1">{children}</th>
 );
 

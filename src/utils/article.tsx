@@ -1,14 +1,15 @@
 import { ARTICLES_DIR } from "@/constants/article";
-import { existsSync, readFileSync, readdirSync, statSync } from "fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import matter from "gray-matter";
-import { dirname, join } from "path";
+import { dirname, join } from "node:path";
 
-interface Article {
+export interface Article {
   slug: string;
   content: string;
   data: {
     title: string;
     description: string;
+    tags?: string[];
   };
 }
 
@@ -20,7 +21,7 @@ const processIncludes = (content: string, base: string): string => {
 
   while (match !== null) {
     const [directive, path] = match;
-    const fullPath = join(base, path + ".md");
+    const fullPath = join(base, `${path}.md`);
     match = pattern.exec(result);
 
     if (!existsSync(fullPath)) {
@@ -39,7 +40,7 @@ const getArticle = (slug: string): Article | null => {
   try {
     const slugPath = join(ARTICLES_DIR, slug);
     const exists = existsSync(slugPath);
-    const path = exists ? join(slugPath, "index.md") : slugPath + ".md";
+    const path = exists ? join(slugPath, "index.md") : `${slugPath}.md`;
 
     const contents = readFileSync(path, "utf8");
     const processed = processIncludes(contents, dirname(path));
@@ -54,12 +55,12 @@ const getArticles = (): Article[] => {
   try {
     const files = readdirSync(ARTICLES_DIR);
     const articles: Article[] = [];
-    files.forEach((file) => {
+    for (const file of files) {
       const article = getArticle(file.replace(".md", ""));
       if (article) {
         articles.push(article);
       }
-    });
+    }
     return articles;
   } catch (error) {
     console.error("Error reading directory:", error);
