@@ -10,6 +10,8 @@ import { countCharacterFrequency } from "@/utils/letter-frequency";
 
 interface Values {
   input: string,
+  wordListMode: boolean,
+  polygraphs: string
 }
 
 const textAreaProps = { cols: 40, rows: 20 }
@@ -19,8 +21,9 @@ const CharacterFrequency = () => {
 
   const [output, setOutput] = useState<string>("");
 
-  const onSubmit: SubmitHandler<Values> = ({ input }) => {
-    const frequency = countCharacterFrequency(input);
+  const onSubmit: SubmitHandler<Values> = ({ input, wordListMode, polygraphs }) => {
+    console.log({ wordListMode })
+    const frequency = countCharacterFrequency(input, { wordListMode, polygraphs: polygraphs.split(/ +/) });
 
     const formattedOutput = Object.entries(frequency)
       .sort(([, countA], [, countB]) => countB - countA)
@@ -46,15 +49,25 @@ const CharacterFrequency = () => {
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col lg:flex-row gap-4 lg:gap-6">
           <TextArea
             {...textAreaProps}
-            placeholder="Enter text here..."
+            placeholder="Enter text here"
             name="input" />
-          <div>
+          <div className="flex flex-col gap-2 lg:gap-4">
+            <div className="flex items-center gap-2 lg:gap-4">
+              <input type="checkbox" className="size-4" {...methods.register('wordListMode')} />
+              <label>Word list mode (Provide a word list with frequency)</label>
+            </div>
+            <div className="flex flex-col gap-2 lg:gap-4">
+              <label>Polygraphs (Separate polygraphs with space)</label>
+              <input type="text" {...methods.register('polygraphs')} />
+
+            </div>
             <input type="submit"
               className="btn btn-primary"
             />
           </div>
           <TextArea
             readOnly
+            placeholder="Output here"
             {...textAreaProps}
             value={output}
           />
