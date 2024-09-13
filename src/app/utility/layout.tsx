@@ -14,7 +14,7 @@ interface LayoutProps {
 const UtilityLayout: FC<LayoutProps> = ({ children }) => (
   <>
     <NavBar />
-    <main className="space-y-4 lg:space-y-6">{children}</main>
+    <main className="space-y-4 lg:space-y-6 pb-4 lg:pb-6">{children}</main>
   </>
 );
 

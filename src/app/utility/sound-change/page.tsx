@@ -9,6 +9,8 @@ import type { SubmitHandler } from "react-hook-form"
 import TextArea from "@/components/text-area";
 import { countCharacterFrequency } from "@/utils/letter-frequency";
 import { applyChanges, parseChanges } from "@/utils/sound-change";
+import Select from "@/components/select";
+import Head from "next/head";
 
 interface Values {
   input: string,
@@ -54,6 +56,9 @@ const SoundChange: FC = () => {
 
   return (
     <>
+      <Head>
+        <title>Sound Changer</title>
+      </Head>
       <h1>Sound Changer</h1>
       <p>
         This utility allows you to apply a series of sound changes to an input
@@ -67,46 +72,52 @@ const SoundChange: FC = () => {
       </p>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-4 lg:gap-6">
-          <div className="flex gap-4 lg:gap-6">
-            <div>
-              <label>Changes</label>
-              <TextArea
-                allowTab
-                defaultValue={defaultValues.input}
-                name="input"
-                {...textareaProps}
-              />
-            </div>
-            <div>
-              <label>Input Text</label>
-              <TextArea
-                allowTab
-                defaultValue={defaultValues.changes}
-                name="changes"
-                {...textareaProps}
-              />
-            </div>
+          <div className="flex flex-wrap gap-4 lg:gap-6 justify-between">
+            <TextArea
+              allowTab
+              label="Changes"
+              name="input"
+              defaultValue={defaultValues.input}
+              {...textareaProps}
+            />
+            <TextArea
+              allowTab
+              label="Input Text"
+              name="changes"
+              defaultValue={defaultValues.changes}
+              {...textareaProps}
+            />
           </div>
-          <div className="flex gap-4 lg:gap-6 items-center">
-            <label>Empty Marker</label>
-            <select defaultValue={defaultValues.emptyMarker} {...methods.register("emptyMarker")}>
-              <option value="-">-</option>
-              <option value="0">0</option>
-            </select>
-            <input type="submit" className="btn btn-primary" />
-          </div>
-          <div className="flex gap-4 lg:gap-6">
-            <div>
-              <label>Output Text</label>
-              <textarea {...textareaProps} value={output} readOnly />
-            </div>
-            <div>
-              <label>Letter Frequency</label>
-              <textarea {...textareaProps} value={frequency} readOnly />
-            </div>
+
+          <Select
+            label="Empty Marker"
+            name="emptyMarker"
+            options={[{ value: '-' }, { value: '0' }]}
+          />
+          <input
+            type="submit"
+            value="Apply Changes"
+            className="btn btn-primary w-full rounded-md cursor-pointer transition"
+          />
+          <div className="flex flex-wrap gap-4 lg:gap-6 justify-between">
+
+            <TextArea
+              label="Output Text"
+              {...textareaProps}
+              value={output}
+              readOnly
+            />
+
+            <TextArea
+              label="Letter Frequency"
+              {...textareaProps}
+              value={frequency}
+              readOnly
+            />
           </div>
         </form>
       </FormProvider>
+
     </>
   );
 };

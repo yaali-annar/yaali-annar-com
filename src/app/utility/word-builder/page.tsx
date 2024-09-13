@@ -10,6 +10,7 @@ import TextArea from "@/components/text-area";
 import { applyChanges, parseChanges } from "@/utils/sound-change";
 import { buildWord, compileRule } from "@/utils/word-builder";
 import { countCharacterFrequency } from "@/utils/letter-frequency";
+import Select from "@/components/select";
 
 interface Values {
   changes: string,
@@ -78,43 +79,37 @@ const WordBuilder = () => {
       </p>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-4 lg:gap-6">
-          <div className="flex gap-4 lg:gap-6">
-            <div>
-              <label>Rules</label>
-              <TextArea
-                allowTab
-                defaultValue={defaultValues.rules}
-                name="rules"
-                {...textareaProps}
-              />
-            </div>
-            <div>
-              <label>Input Text</label>
-              <TextArea
-                allowTab
-                defaultValue={defaultValues.changes}
-                name="changes"
-                {...textareaProps}
-              />
-            </div>
+          <div className="flex flex-wrap gap-4 lg:gap-6 justify-between">
+            <TextArea
+              allowTab
+              className="w-full max-w-96"
+              label="Rules"
+              name="rules"
+              defaultValue={defaultValues.rules}
+              {...textareaProps}
+            />
+            <TextArea
+              allowTab
+              className="w-full max-w-96"
+              label="Input text"
+              name="changes"
+              defaultValue={defaultValues.changes}
+              {...textareaProps}
+            />
           </div>
-          <div className="flex gap-4 lg:gap-6 items-center">
-            <label>Empty Marker</label>
-            <select defaultValue={defaultValues.emptyMarker} {...methods.register("emptyMarker")}>
-              <option value="-">-</option>
-              <option value="0">0</option>
-            </select>
-            <input type="submit" className="btn btn-primary" />
-          </div>
-          <div className="flex gap-4 lg:gap-6">
-            <div>
-              <label>Output Text</label>
-              <textarea {...textareaProps} value={output} readOnly />
-            </div>
-            <div>
-              <label>Letter Frequency</label>
-              <textarea {...textareaProps} value={frequency} readOnly />
-            </div>
+          <Select
+            label="Empty Marker"
+            name="emptyMarker"
+            options={[{ value: '-' }, { value: '0' }]}
+          />
+          <input
+            type="submit"
+            value="Generate"
+            className="btn btn-primary w-full rounded-md cursor-pointer transition"
+          />
+          <div className="flex flex-wrap gap-4 lg:gap-6 justify-between">
+            <TextArea label="Output text" className="w-full max-w-96" {...textareaProps} value={output} readOnly />
+            <TextArea label="Letter Frequency" className="w-full max-w-96" {...textareaProps} value={frequency} readOnly />
           </div>
         </form>
       </FormProvider>

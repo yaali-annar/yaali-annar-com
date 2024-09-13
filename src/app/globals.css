@@ -31,15 +31,24 @@ h4 {
   @apply text-lg lg:text-xl;
 }
 
+input[type="checkbox"] {
+  @apply size-4;
+}
+
+input[type="text"],
+textarea {
+  @apply bg-black text-yellow-400 p-2 rounded border border-yellow-400;
+}
+
+label {
+  @apply text-sm lg:text-base font-medium;
+}
+
 main {
   @apply max-w-[960px] mx-auto px-4;
 }
 
 select {
-  @apply bg-black text-yellow-400 p-4 rounded border border-yellow-400;
-}
-
-textarea {
   @apply bg-black text-yellow-400 p-4 rounded border border-yellow-400;
 }
 
