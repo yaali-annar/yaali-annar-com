@@ -51,3 +51,4 @@ const parseChanges = (changesString: string, emptyMarker: string): Change[] => {
 };
 
 export { applyChanges, parseChanges };
+export type { Change };

@@ -52,8 +52,6 @@ const SoundChange: FC = () => {
       .join("\n");
   }, [output]);
 
-  console.log({ input: methods.watch("input") })
-
   return (
     <>
       <Head>
@@ -75,14 +73,14 @@ const SoundChange: FC = () => {
           <div className="flex flex-wrap gap-4 lg:gap-6 justify-between">
             <TextArea
               allowTab
-              label="Changes"
+              label="Input"
               name="input"
               defaultValue={defaultValues.input}
               {...textareaProps}
             />
             <TextArea
               allowTab
-              label="Input Text"
+              label="Changes"
               name="changes"
               defaultValue={defaultValues.changes}
               {...textareaProps}
