@@ -91,7 +91,7 @@ const WordBuilder = () => {
             <TextArea
               allowTab
               className="w-full max-w-96"
-              label="Input text"
+              label="Changes"
               name="changes"
               defaultValue={defaultValues.changes}
               {...textareaProps}

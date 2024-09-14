@@ -24,7 +24,6 @@ const CharacterFrequency = () => {
   const [output, setOutput] = useState<string>("");
 
   const onSubmit: SubmitHandler<Values> = ({ input, wordListMode, polygraphs }) => {
-    console.log({ wordListMode })
     const frequency = countCharacterFrequency(input, { wordListMode, polygraphs: polygraphs.split(/ +/) });
 
     const formattedOutput = Object.entries(frequency)

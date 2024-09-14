@@ -81,7 +81,7 @@ const chooseValue = (values: VariableValue[]): string => {
 const replaceVariableInWord = (
   word: string,
   rule: Rule,
-  maxIterations: number = 100
+  maxIterations = 100
 ): string => {
   let loopCounter = 0;
 
@@ -105,7 +105,7 @@ const buildWord = (rule: Rule) => {
   if (!rule.word) {
     return "";
   }
-  let initialWord = chooseValue(rule.word);
+  const initialWord = chooseValue(rule.word);
   if (!initialWord) {
     return "";
   }
@@ -114,3 +114,4 @@ const buildWord = (rule: Rule) => {
 };
 
 export { compileRule, buildWord };
+export type { Rule };
