@@ -2,8 +2,8 @@
 
 Loan from non-european words can be used to replace loan-words from european language.
 
-- Sapatos > Paduka
-- Elefante > Gaja
+- Sapatos &gt; Paduka
+- Elefante &gt; Gaja
 
 Indonesian (or malay) are used in the following scenarios:
 

@@ -81,7 +81,7 @@ The word for 'who' and 'what' Tagalur has the same root 'nu' This can be combine
 
 The 'nu' particle behave like the determiner.
 
-- Taw nu > What kind of person
+- Taw nu &gt; What kind of person
 
 The other interrogatives are:
 

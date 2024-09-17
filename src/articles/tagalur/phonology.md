@@ -24,25 +24,25 @@ Most of the sound are applied based on the etymology of the word.
 #### Consonants
 
 - h, ', w, or null reverts to l
-  - tainga > talinga
-  - buwan > bulan
-  - bahay > balay
-  - daan > jalan
+  - tainga &gt; talinga
+  - buwan &gt; bulan
+  - bahay &gt; balay
+  - daan &gt; jalan
 - g reverts to r
-  - tulug > tudur
+  - tulug &gt; tudur
 - d reverts to j
-  - daan > jalan
+  - daan &gt; jalan
 - Final ' turns to h (as in malay)
-  - basa > basah
-  - puti > putih
+  - basa &gt; basah
+  - puti &gt; putih
 - l reverts to d, j, or r
-  - sila > sida
-  - ngalan > ngajan
+  - sila &gt; sida
+  - ngalan &gt; ngajan
 - Metatheses are reverted
-  - itlog > telur
-  - isda > sedah
+  - itlog &gt; telur
+  - isda &gt; sedah
 
 #### Vowels
 
-- i reverts to e: dikit > deket
-- o reverts to u: itlog > telur
+- i reverts to e: dikit &gt; deket
+- o reverts to u: itlog &gt; telur

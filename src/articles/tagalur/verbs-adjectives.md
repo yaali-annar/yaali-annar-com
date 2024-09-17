@@ -7,7 +7,7 @@ Verbs in Tagalur are conjugated on focus (voice) and aspect. The order of the co
 
 The causative pa-, added to intrasitive turns a verb into transitive:
 
-- atay (die) > pa'atay (kill)
+- atay (die) &gt; pa'atay (kill)
 
 The aspects are as follows.
 
@@ -34,15 +34,15 @@ Stative focus only applies to intransitive verbs (and predicative adjective). Th
 
 Focus and Aspect are combined together in semi regular fashion. In particular, notice that -en is dropped in Perfective and Progressive.
 
-|             | Neutral | Perfective | Contemplated | Progresive  |
-| ----------- | ------- | ---------- | ------------ | ----------- |
-| Stative     | ma-     | na-        | ma-CV-       | na-CV-      |
-| Actor       | -um-    | -inum-     | C-um-V-      | C-inum-V    |
-| Patient     | -en     | -in-       | CV- -en      | C-in-V-     |
-| Locus       | -an     | -in- -an   | CV- -an      | C-in-V- -an |
-| Benefactive | i-      | i<in>-     | i-C<in>V-    | i-CV-       |
-| Instrument  | paN-    | pinaN-     | pinaN-CV-    | paN-CV-     |
-| Reason      | ka-     | kina-      | kina-CV-     | ka-CV-      |
+|             | Neutral | Perfective   | Contemplated    | Progresive  |
+| ----------- | ------- | ------------ | --------------- | ----------- |
+| Stative     | ma-     | na-          | ma-CV-          | na-CV-      |
+| Actor       | -um-    | -inum-       | C-um-V-         | C-inum-V    |
+| Patient     | -en     | -in-         | CV- -en         | C-in-V-     |
+| Locus       | -an     | -in- -an     | CV- -an         | C-in-V- -an |
+| Benefactive | i-      | i&lt;in&gt;- | i-C&lt;in&gt;V- | i-CV-       |
+| Instrument  | paN-    | pinaN-       | pinaN-CV-       | paN-CV-     |
+| Reason      | ka-     | kina-        | kina-CV-        | ka-CV-      |
 
 Here are the full combination of the aspect and the focus.
 
@@ -70,18 +70,18 @@ Tagalur uses adverb for these constructs. Just like other adverb it comes after 
 
 Adjectives are stative verbs, they can be used like intransitive verb.
 
-- **Matudur a asu** > The dog sleeps
-- **Maputi a balay** > The house is white
+- **Matudur a asu** &gt; The dog sleeps
+- **Maputi a balay** &gt; The house is white
 
 When used as attributive, it goes after the noun (or noun phrase) it modifies with the link "ya".
 
-- **A asu ya matudur** > The sleeping dog (the dog who sleeps)
-- **A balay ya maputi** > The white house (the house that is white)
+- **A asu ya matudur** &gt; The sleeping dog (the dog who sleeps)
+- **A balay ya maputi** &gt; The white house (the house that is white)
 
 This strategy can even be extended to transitive verbs.
 
-- I taw ya tumayu ta balay > The person who build the house.
-- A balay ya tayun si tau > The house that the person build.
+- I taw ya tumayu ta balay &gt; The person who build the house.
+- A balay ya tayun si tau &gt; The house that the person build.
 
 For a lot of case, the linker "ya" can be dropped:
 

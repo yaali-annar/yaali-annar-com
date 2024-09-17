@@ -1,19 +1,35 @@
-import { FC } from "react";
-import { readdirSync } from "fs";
 
-import type { Metadata } from "next";
 
-import { ARTICLES_DIR } from "@/constants/article";
-import CustomMarkdown from "@/components/custom-markdown";
+import type { ReactElement } from "react";
+import { readdirSync } from "node:fs";
+import type { ParsedUrlQuery } from "node:querystring";
+
+import type { Metadata } from 'next'
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkMath from "remark-math";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeKatex from "rehype-katex";
+
+
+import rehypeTocWithOptions from "@/components/custom-markdown/rehype-toc";
+import components from "@/components/custom-markdown/components";
 import NavBar from "@/components/navbar";
-import { getArticle } from "@/utils/article";
+import { ARTICLES_DIR } from "@/constants/article";
 
-interface Params {
+import { getArticle, type ArticleData } from "../engine";
+
+interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
+interface ArticleProps {
+  article: MDXRemoteSerializeResult<never, ArticleData> | null;
+}
+
 interface PageProps {
-  params: Params;
+  params: Params
 }
 
 interface Article {
@@ -49,21 +65,29 @@ const generateMetadata = ({ params }: PageProps): Metadata => {
   };
 };
 
-const Article: FC<PageProps> = ({ params }) => {
-  const { slug } = params;
-  const article = getArticle(slug);
+const mdxOptions = {
+  remarkPlugins: [remarkMath, remarkGfm],
+  rehypePlugins: [rehypeSlug, rehypeTocWithOptions, rehypeKatex],
 
+}
+
+
+const Article = async ({ params }: PageProps): Promise<ReactElement | null> => {
+  const article = await getArticle(params?.slug || '');
   if (!article) {
     return null;
   }
 
-  const { data, content } = article;
+  const { data } = article;
+
+  console.log({ article })
+
   return (
     <>
       <NavBar />
       <article className="mx-auto max-w-4xl px-4 my-4">
         <h1>{data.title}</h1>
-        <CustomMarkdown>{content}</CustomMarkdown>
+        <MDXRemote options={{ mdxOptions }} source={article.content} {...{ components }} />
       </article>
     </>
   );

@@ -67,12 +67,12 @@ The **actor morpheme** shifts the root noun into the **causer of an originally i
 
 This can even be used for concrete nouns:
 
-- puuv > pu(eh)uv : someone that turns other people into dogs
+- puuv &gt; pu(eh)uv : someone that turns other people into dogs
 
 As usual, the verb form is derived by switching the first consonant and vowel.
 
-- 'ak'as > 'ak(ak)'as: move something
-- ul'ul > ul(ek)'ul: to consume (as an actor)
+- 'ak'as &gt; 'ak(ak)'as: move something
+- ul'ul &gt; ul(ek)'ul: to consume (as an actor)
 
 In the actor voice, while the noun with an absolute (null) case becomes the actor of a transitive verb, the patient of a verb, if needed, is marked with a **patient case "il'**.
 
@@ -89,7 +89,7 @@ While -il- can be used as an infix, it has the same meaning in intransitive verb
 
 In intransitive roots, it denotes the patient of the causative form of the root.
 
-- puiluv > someone who is turned into a dog.
+- puiluv &gt; someone who is turned into a dog.
 
 # Modality
 
@@ -111,9 +111,9 @@ The dog can drink milk
 
 Likewise, the infix can be used in noun as well.
 
-- puk'uuv > someone who can be a dog.
-- pusauv > someone who must be a dog (someone who is definitely a dog).
+- puk'uuv &gt; someone who can be a dog.
+- pusauv &gt; someone who must be a dog (someone who is definitely a dog).
 
 And the infix can be put together with the voices.
 
-- puilk'uuv > someone who can be turned into a dog
+- puilk'uuv &gt; someone who can be turned into a dog

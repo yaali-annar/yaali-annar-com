@@ -54,7 +54,7 @@ Noun in absolute case may act as nominative or accusative depending on the focus
 ```gloss
 Bumaca i taw ta aklat
 @bumaca i taw ta aklat
-@<ACT>read ABS(NOM) person ACC book
+@&lt;ACT&gt;read ABS(NOM) person ACC book
 A person reads a book
 ```
 
@@ -102,7 +102,7 @@ The oblique govern most other prepositions.
 
 ```gloss
 Gumawa i ina ta kanen ni untuk ki ama
-@G<um>awa i ina ta kanen ni untuk ki ama
-@<ACT>make ABS mother ACC food this for OBL father
+@G&lt;um&gt;awa i ina ta kanen ni untuk ki ama
+@&lt;ACT&gt;make ABS mother ACC food this for OBL father
 Mom made this food for dad.
 ```

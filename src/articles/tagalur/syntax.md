@@ -5,7 +5,7 @@ Tagalur has VSO word order.
 ```gloss
 Kuma'en i batah ta mansan
 @kuma'en i batah ta mansan
-@<ACT>eat ABS child ACC apple
+@&lt;ACT&gt;eat ABS child ACC apple
 A child eats an apple
 ```
 
@@ -39,8 +39,8 @@ In Tagalur the embeded sentence has "ang" preceding it. It can be combined with 
 
 ```gloss
 Umaw aku tang sumabi aw ta tu'u
-@<um>aw aku ta-ng sumabi aw ta tu'u
-@<ACT>want I.ABS ACC-CPL tell you.ABS ACC truth
+@&lt;um&gt;aw aku ta-ng sumabi aw ta tu'u
+@&lt;ACT&gt;want I.ABS ACC-CPL tell you.ABS ACC truth
  I want you to tell the truth
 ```
 
@@ -48,8 +48,8 @@ If both of the the focus of the main sentence and the embedded sentence are the 
 
 ```gloss
 Sumuka aku nang mapergi aku da ke bunduk
-@s<um>uka aku     ta-ng  ma-pergi aku ke da bunduk
-@<ACT>like I(ABS) ACC-COMPL INTR-go I(ABS) to LOC mountain
+@s&lt;um&gt;uka aku     ta-ng  ma-pergi aku ke da bunduk
+@&lt;ACT&gt;like I(ABS) ACC-COMPL INTR-go I(ABS) to LOC mountain
 I like (that) I go to the mountain
 ```
 
@@ -57,8 +57,8 @@ The second I can be dropped
 
 ```gloss
 Sumuka aku nang mapergi aku da ke bunduk
-@s<um>uka aku ta-ng ma-pergi ke da bunduk
-@<ACT>like I(ABS) ACC-ng INTR-go to LOC mountain
+@s&lt;um&gt;uka aku ta-ng ma-pergi ke da bunduk
+@&lt;ACT&gt;like I(ABS) ACC-ng INTR-go to LOC mountain
 I like to go to the mountain
 ```
 

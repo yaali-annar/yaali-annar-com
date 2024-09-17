@@ -27,7 +27,7 @@ There is a vowel harmony between closed (u ə) and open (o ɐ). /i/ can appear a
 
 Consider following roots:
 
-- <raal> /ɹaːl/
-- <r'aal> /ɹˤaːl/
-- <ra'al> /ɹaʕal/
-- <r'a'al> /ɹˤaʕal/
+- &lt;raal&gt; /ɹaːl/
+- &lt;r'aal&gt; /ɹˤaːl/
+- &lt;ra'al&gt; /ɹaʕal/
+- &lt;r'a'al&gt; /ɹˤaʕal/
