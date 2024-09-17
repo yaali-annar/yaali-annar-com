@@ -1,4 +1,6 @@
-import React, { FC, useState } from 'react';
+"use client"
+
+import { type FC, useState } from 'react';
 
 const Counter: FC = () => {
   const [count, setCount] = useState<number>(0);

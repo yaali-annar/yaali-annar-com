@@ -10,23 +10,45 @@ import type {
   TdHTMLAttributes,
   ThHTMLAttributes,
 } from "react";
-import type { Components } from "react-markdown";
 import { TOC_ID } from "./constants";
 import Gloss from "./gloss";
+import type { MDXComponents } from "mdx/types";
 
-const PreComponent: FC<HTMLAttributes<HTMLPreElement>> = ({ children }) => {
-  if (isValidElement(children)) {
-    const { className, children: code } = children.props;
-    if (className === "language-gloss" && typeof code === "string") {
-      return <Gloss>{code}</Gloss>;
-    }
+const AComponent: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
+  children = "",
+  href = "",
+}) => (
+  <a className="text-black bg-yellow-400 px-2 rounded-full" href={href}>
+    {children}
+  </a>
+);
+
+const NavComponent: FC<HTMLAttributes<HTMLElement>> = ({
+  children = "", className = ''
+}) => {
+
+  console.log({ className })
+
+  if (className.includes('toc')) {
+    return (
+      <div {...{ className }}>
+        <h2 id={TOC_ID}>Table of Contents</h2>
+        <nav>
+          {children}
+        </nav>
+      </div>
+    )
   }
-  return <pre>{children}</pre>;
+
+  return (
+    <nav>
+      {children}
+    </nav>
+  )
+
+
 };
 
-const UlComponent: FC<HTMLAttributes<HTMLUListElement>> = ({ children }) => (
-  <ul className="list-disc pl-4">{children}</ul>
-);
 
 const TableComponent: FC<TableHTMLAttributes<HTMLTableElement>> = ({ children }) => (
   <div className="border-colapse border border-yellow-400 rounded my-2 lg:my-4 inline-block overflow-x-auto max-w-full">
@@ -42,14 +64,20 @@ const ThComponent: FC<ThHTMLAttributes<HTMLTableCellElement>> = ({ children }) =
   <th className="px-3 py-1">{children}</th>
 );
 
-const AComponent: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
-  children = "",
-  href = "",
-}) => (
-  <a className="text-black bg-yellow-400 px-2 rounded-full" href={href}>
-    {children}
-  </a>
+const PreComponent: FC<HTMLAttributes<HTMLPreElement>> = ({ children }) => {
+  if (isValidElement(children)) {
+    const { className, children: code } = children.props;
+    if (className === "language-gloss" && typeof code === "string") {
+      return <Gloss>{code}</Gloss>;
+    }
+  }
+  return <pre>{children}</pre>;
+};
+
+const UlComponent: FC<HTMLAttributes<HTMLUListElement>> = ({ children }) => (
+  <ul className="list-disc pl-4">{children}</ul>
 );
+
 
 const generateHeadingComponent = (level: number) => {
   const safeLevel = Math.max(1, Math.min(level, 6));
@@ -77,13 +105,14 @@ const generateHeadingComponent = (level: number) => {
   return HeadingComponent;
 };
 
-const components: Components = {
+const components: MDXComponents = {
   a: AComponent,
   h2: generateHeadingComponent(2),
   h3: generateHeadingComponent(3),
   h4: generateHeadingComponent(4),
   h5: generateHeadingComponent(5),
   h6: generateHeadingComponent(6),
+  nav: NavComponent,
   ul: UlComponent,
   pre: PreComponent,
   table: TableComponent,

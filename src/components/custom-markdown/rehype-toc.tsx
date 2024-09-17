@@ -38,8 +38,8 @@ const customizeTOC = (node: HtmlElementNode) => {
 const rehypeTocOptions: RehypeTocOptions = {
   customizeTOC,
   cssClasses: {
-    toc: "border-yellow-600 border rounded py-2 px-4 lg:p-4 my-3 text-yellow-600 inline-block",
-    list: "list-disc pl-4",
+    toc: "toc border-yellow-600 border rounded py-2 px-4 lg:p-4 my-3 text-yellow-600 inline-block",
+    list: "toc-list list-disc pl-4",
   },
 };
 

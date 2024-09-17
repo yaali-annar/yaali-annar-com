@@ -2,8 +2,9 @@
 
 import { useMemo, useState, type FC } from "react";
 import Link from "next/link";
-import type { Article } from '@/utils/article'
+
 import { kebabToProperName } from "@/utils/string";
+import { Article } from "./engine";
 
 interface ArticlesProps {
   articles: Article[]

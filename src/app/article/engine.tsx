@@ -28,10 +28,6 @@ export interface Article {
 
 const pattern = /!include\s+"([^"]+)"/g;
 
-const mdxOptions = {
-  remarkPlugins: [remarkMath, remarkGfm],
-  rehypePlugins: [rehypeSlug, rehypeTocWithOptions, rehypeKatex]
-}
 
 const processIncludes = (content: string, base: string): string => {
   let result = content;
@@ -64,8 +60,6 @@ const getArticle = (slug: string): Article | null => {
       join(slugPath, "index.mdx"),
     ]
 
-    console.log({ candidatePaths })
-
     let path = '';
 
     for (const candidatePath of candidatePaths) {
@@ -89,35 +83,12 @@ const getArticle = (slug: string): Article | null => {
   }
 };
 
-
-const getArticleMdx = async (slug: string): Promise<MDXRemoteSerializeResult<never, ArticleData> | null> => {
-  try {
-    const slugPath = join(ARTICLES_DIR, slug);
-    const exists = existsSync(slugPath);
-    const path = exists ? join(slugPath, "index.md") : `${slugPath}.md`;
-
-    const contents = readFileSync(path, "utf8");
-    const processed = processIncludes(contents, dirname(path));
-    const source = await serialize<never, ArticleData>(processed, {
-      parseFrontmatter: true, mdxOptions: {
-        remarkPlugins: [remarkMath],
-        rehypePlugins: [rehypeKatex]
-      }
-    });
-    return source
-
-  } catch (error) {
-    console.error("Error reading article:", error);
-    return null;
-  }
-};
-
 const getArticles = (): Article[] => {
   try {
     const files = readdirSync(ARTICLES_DIR);
     const articles: Article[] = [];
     for (const file of files) {
-      const article = getArticle(file.replace(".md", ""));
+      const article = getArticle(file.replace(/.mdx?/, ""));
       if (article) {
         articles.push(article);
       }
@@ -129,4 +100,4 @@ const getArticles = (): Article[] => {
   }
 };
 
-export { getArticle, getArticleMdx, getArticles };
+export { getArticle, getArticles };
