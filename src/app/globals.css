@@ -21,7 +21,7 @@ article a:not(nav a) {
 }
 
 body {
-  @apply bg-black text-yellow-400 w-full min-h-screen;
+  @apply bg-black text-yellow-400 w-full min-h-screen  text-base lg:text-lg;
 }
 
 h1,
@@ -47,6 +47,10 @@ h3 {
 
 h4 {
   @apply text-lg lg:text-xl;
+}
+
+hr {
+  @apply border-yellow-400 my-4;
 }
 
 input[type="checkbox"] {
