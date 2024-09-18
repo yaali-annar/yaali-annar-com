@@ -92,7 +92,7 @@ const Reference = () => {
               </tbody>
             </table>
             <div >
-              <p>* Mane, Eyebrow, Nail</p>
+              <p>* Mane, Eyebrow, also Nails</p>
               <p>** Nose, Upper Lip, Palm</p>
               <hr />
               <p>The mascara color are fully saturated:
