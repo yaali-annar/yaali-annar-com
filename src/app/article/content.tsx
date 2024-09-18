@@ -2,8 +2,10 @@
 
 import { useMemo, useState, type FC } from "react";
 import Link from "next/link";
-import type { Article } from '@/utils/article'
-import { kebabToProperName } from "@/utils/string";
+
+import { classNames, kebabToProperName } from "@/utils/string";
+
+import type { Article } from "./types";
 
 interface ArticlesProps {
   articles: Article[]
@@ -28,9 +30,15 @@ const ArticlesContent: FC<ArticlesProps> = ({ articles }) => {
     <main className="space-y-4 lg:space-y-8">
       <div className="space-y-2">
         <h1>Articles</h1>
-        <div className="flex gap-2 lg:gap-4">Tags:
+        <div className="flex gap-2">Tags:
           {tags.map(tag => (
-            <span className={tag === selectedTag ? "text-black bg-yellow-400 px-2 rounded-full" : ''} key={tag} onClick={() => setSelectedTag(tag)} onKeyDown={() => setSelectedTag(tag)}>
+            <span
+              className={classNames(
+                'cursor-pointer', {
+                "text-black bg-yellow-400 px-2 rounded-full": tag === selectedTag,
+                'border border-yellow-400 px-2 rounded-full': tag !== selectedTag
+              })}
+              key={tag} onClick={() => setSelectedTag(tag)} onKeyDown={() => setSelectedTag(tag)}>
               {kebabToProperName(tag)}
             </span>
           ))}

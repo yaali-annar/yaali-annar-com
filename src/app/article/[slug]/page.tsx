@@ -1,12 +1,13 @@
-import { FC } from "react";
-import { readdirSync } from "fs";
+import { readdirSync } from "node:fs";
+import type { FC } from "react";
 
 import type { Metadata } from "next";
 
 import { ARTICLES_DIR } from "@/constants/article";
 import CustomMarkdown from "@/components/custom-markdown";
 import NavBar from "@/components/navbar";
-import { getArticle } from "@/utils/article";
+
+import { getArticle } from "../engine";
 
 interface Params {
   slug: string;
@@ -16,14 +17,6 @@ interface PageProps {
   params: Params;
 }
 
-interface Article {
-  content: string;
-  data: {
-    title: string;
-    description: string;
-  };
-}
-
 const generateStaticParams = (): Params[] => {
   const filenames = readdirSync(ARTICLES_DIR);
   return filenames.map((filename) => ({ slug: filename.replace(/\.md$/, "") }));
@@ -31,28 +24,22 @@ const generateStaticParams = (): Params[] => {
 
 const generateMetadata = ({ params }: PageProps): Metadata => {
   const { slug } = params;
-
   const article = getArticle(slug);
-
   if (!article) {
     return {};
   }
 
   const { data } = article;
-
+  const { title, description } = data
   return {
-    title: data.title,
-    openGraph: {
-      title: data.title,
-      description: data.description,
-    },
+    title,
+    openGraph: { description, title },
   };
 };
 
 const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
-  const article = getArticle(slug);
-
+  const article = getArticle(slug, true);
   if (!article) {
     return null;
   }
@@ -61,7 +48,7 @@ const Article: FC<PageProps> = ({ params }) => {
   return (
     <>
       <NavBar />
-      <article className="mx-auto max-w-4xl px-4 my-4">
+      <article className="mx-auto max-w-4xl px-4 space-y-3 lg:space-y-6">
         <h1>{data.title}</h1>
         <CustomMarkdown>{content}</CustomMarkdown>
       </article>
