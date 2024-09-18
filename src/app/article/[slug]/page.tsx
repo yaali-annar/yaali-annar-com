@@ -24,16 +24,13 @@ const generateStaticParams = (): Params[] => {
 
 const generateMetadata = ({ params }: PageProps): Metadata => {
   const { slug } = params;
-
   const article = getArticle(slug);
-
   if (!article) {
     return {};
   }
 
   const { data } = article;
   const { title, description } = data
-
   return {
     title,
     openGraph: { description, title },
@@ -42,8 +39,7 @@ const generateMetadata = ({ params }: PageProps): Metadata => {
 
 const Article: FC<PageProps> = ({ params }) => {
   const { slug } = params;
-  const article = getArticle(slug);
-
+  const article = getArticle(slug, true);
   if (!article) {
     return null;
   }

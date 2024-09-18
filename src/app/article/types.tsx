@@ -6,6 +6,9 @@ export interface ArticleData {
 
 export interface Article {
     slug: string;
-    content: string;
     data: ArticleData
+}
+
+export interface ArticleDetail extends Article {
+    content: string;
 }
