@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Babi Landing Page",
 };
 
-const RootLayout: FC<PropsWithChildren<Record<string, never>>> = ({ children }) => (
+const RootLayout: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => (
   <html lang="en">
     <Body>{children}</Body>
   </html>

@@ -11,7 +11,7 @@ const hyperLegible = Atkinson_Hyperlegible({
   subsets: ["latin-ext"],
 });
 
-const Body: FC<PropsWithChildren<Record<string, never>>> = ({ children }) => (
+const Body: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => (
   <body className={hyperLegible.className}>{children}</body>
 );
 
