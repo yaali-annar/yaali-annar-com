@@ -1,8 +1,4 @@
-import { FC, ReactNode } from "react";
-
-interface GlossProps {
-  children: string;
-}
+import type { FC, ReactNode } from "react";
 
 interface GlossProps {
   children: string;
@@ -19,10 +15,10 @@ const Gloss: FC<GlossProps> = ({ children }) => {
       return;
     }
 
-    const glossContent = glossLines[0].map((_, i) => (
-      <div key={i}>
-        {glossLines.map((line, j) => (
-          <div key={`${j}-${i}`}>{line[i]}</div>
+    const glossContent = glossLines[0].map((morpheme, i) => (
+      <div key={morpheme}>
+        {glossLines.map((line) => (
+          <div key={line[i]}>{line[i]}</div>
         ))}
       </div>
     ));
@@ -39,14 +35,14 @@ const Gloss: FC<GlossProps> = ({ children }) => {
     glossLines = [];
   };
 
-  lines.forEach((line, index) => {
+  for (const line of lines) {
     if (line.startsWith("@")) {
       glossLines.push(line.slice(1).trim().split(/ +/));
-      return;
+      continue;
     }
     processGlossLines();
-    processedLines.push(<p key={index}>{line}</p>);
-  });
+    processedLines.push(<p key={line}>{line}</p>);
+  }
 
   processGlossLines();
 

@@ -1,6 +1,8 @@
 "use client";
 
 import NavBar from "@/components/navbar";
+import { createAccessibleProps } from "@/utils/function";
+import { classNames } from "@/utils/string";
 import { useState } from "react";
 
 const images = ["front", "front-side", "side", "back-side", "back"];
@@ -17,19 +19,17 @@ const Reference = () => {
         <div className="lg:flex">
           <div className="flex mb-4 justify-center lg:flex-col">
             {images.map((image, index) => (
-              <div
+              <button
+                {...createAccessibleProps(() => setSelectedIndex(index), ['Enter', ' '])}
                 key={image}
-                className={`w-1/5 lg:w-full max-w-16 rounded-lg ${
-                  selectedIndex === index ? "border-2 border-yellow-400" : ""
-                }`}
-                onClick={() => setSelectedIndex(index)}
+                className={classNames('w-1/5 lg:w-full max-w-16 rounded-lg', { 'border-2 border-yellow-400': selectedIndex === index })}
               >
                 <img
                   className="max-h-28"
                   src={`/reference/yaali-${image}.png`}
                   alt="the babi"
                 />
-              </div>
+              </button>
             ))}
           </div>
           <img

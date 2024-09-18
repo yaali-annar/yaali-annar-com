@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import Reference from "../icon/reference";
 import Article from "../icon/article";
 import Utility from "../icon/utility";

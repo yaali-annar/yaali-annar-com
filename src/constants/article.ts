@@ -1,4 +1,4 @@
-import { join } from "path";
+import { join } from "node:path";
 
 const ARTICLES_DIR = join(process.cwd(), "src", "articles");
 

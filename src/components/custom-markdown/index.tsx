@@ -8,11 +8,11 @@ import remarkMath from "remark-math";
 import rehypeTocWithOptions from "./rehype-toc";
 import components from "./components";
 
-interface Props {
+interface CustomMarkdownProps {
   children: string;
 }
 
-const CustomMarkdown: FC<Props> = ({ children }) => (
+const CustomMarkdown: FC<CustomMarkdownProps> = ({ children }) => (
   <ReactMarkdown
     className="space-y-2 lg:space-y-4"
     remarkPlugins={[remarkMath, remarkGfm]}

@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { FC, ReactNode } from "react";
-import Body from "./body";
+import type { FC } from "react";
 
-interface RootLayoutProps {
-  children: ReactNode;
-}
+import Body from "./body";
+import type { ChildrenOnlyProps } from "./types";
 
 export const metadata: Metadata = {
   title: "Yaali Annar's Site",
   description: "Babi Landing Page",
 };
 
-const RootLayout: FC<RootLayoutProps> = ({ children }) => (
+const RootLayout: FC<ChildrenOnlyProps> = ({ children }) => (
   <html lang="en">
     <Body>{children}</Body>
   </html>
