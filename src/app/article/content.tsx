@@ -6,6 +6,7 @@ import Link from "next/link";
 import { classNames, kebabToProperName } from "@/utils/string";
 
 import type { Article } from "./types";
+import { createAccessibleProps } from "@/utils/function";
 
 interface ArticlesProps {
   articles: Article[]
@@ -33,12 +34,13 @@ const ArticlesContent: FC<ArticlesProps> = ({ articles }) => {
         <div className="flex gap-2">Tags:
           {tags.map(tag => (
             <span
+              {...createAccessibleProps(() => setSelectedTag(tag))}
               className={classNames(
                 'cursor-pointer', {
                 "text-black bg-yellow-400 px-2 rounded-full": tag === selectedTag,
                 'border border-yellow-400 px-2 rounded-full': tag !== selectedTag
               })}
-              key={tag} onClick={() => setSelectedTag(tag)} onKeyDown={() => setSelectedTag(tag)}>
+              key={tag} >
               {kebabToProperName(tag)}
             </span>
           ))}

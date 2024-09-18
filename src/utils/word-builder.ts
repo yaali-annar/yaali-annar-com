@@ -29,27 +29,25 @@ const compileRule = (input: string): Rule => {
       if (!foundAdHocVars?.length) {
         break;
       }
-      foundAdHocVars.forEach((adHocVar) => {
+      for (const adHocVar of foundAdHocVars) {
         const variableName = `ADHOC${adHocCounter}`;
         result = result.replace(adHocVar, `<${variableName}>`);
         rules[variableName] = parseVariableDefinition(
           adHocVar.replace(/[()]/g, "")
         );
         adHocCounter++;
-      });
+      }
       iteration++;
     }
     return result;
   };
 
-  lines
-    .filter((line) => line.includes("="))
-    .forEach((line) => {
-      const [variableName, rawExpression] = line.split("=");
-      const processedExpression =
-        extractAndReplaceAdHocVariables(rawExpression);
-      rules[variableName.trim()] = parseVariableDefinition(processedExpression);
-    });
+  for (const line of lines.filter((line) => line.includes("="))) {
+    const [variableName, rawExpression] = line.split("=");
+    const processedExpression = extractAndReplaceAdHocVariables(rawExpression);
+    rules[variableName.trim()] = parseVariableDefinition(processedExpression);
+  }
+
   return rules;
 };
 
@@ -63,9 +61,9 @@ const chooseValue = (values: VariableValue[]): string => {
   const totalWeight = values.reduce((acc, { weight }) => acc + weight, 0);
   let random = Math.random() * totalWeight;
 
-  values.forEach(({ value, weight }) => {
+  for (const { value, weight } of values) {
     if (result) {
-      return;
+      continue;
     }
 
     random -= weight;
@@ -73,16 +71,17 @@ const chooseValue = (values: VariableValue[]): string => {
     if (random < 0) {
       result = value;
     }
-  });
+  }
 
   return result;
 };
 
 const replaceVariableInWord = (
-  word: string,
+  wordParam: string,
   rule: Rule,
   maxIterations = 100
 ): string => {
+  let word = wordParam;
   let loopCounter = 0;
 
   while (loopCounter < maxIterations) {

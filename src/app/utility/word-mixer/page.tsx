@@ -12,6 +12,7 @@ import { changes, rules, scoring, source } from "./values";
 import { compileScore, type PhonemeScore, scoreWord } from "./engine";
 import { applyChanges, type Change, parseChanges } from "@/utils/sound-change";
 import { buildWord, compileRule, type Rule } from "@/utils/word-builder";
+import { createAccessibleProps } from "@/utils/function";
 
 interface Values {
   source: string,
@@ -140,10 +141,10 @@ const WordMixer = () => {
             className="btn btn-primary w-full rounded-md cursor-pointer transition"
           />
           <input
+            {...createAccessibleProps(() => setIsRunning(false))}
             type="button"
             value="Stop"
             className="btn btn-primary w-full rounded-md cursor-pointer transition"
-            onClick={() => setIsRunning(false)}
           />
           <div className="flex flex-wrap gap-4 lg:gap-6 justify-between">
             <TextArea label="Output" className="w-full max-w-96" {...textareaProps} value={outputString} readOnly />
