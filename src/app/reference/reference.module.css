@@ -1,0 +1,7 @@
+.table th {
+  @apply py-1 px-2;
+}
+
+.table td {
+  @apply py-1 px-2;
+}
