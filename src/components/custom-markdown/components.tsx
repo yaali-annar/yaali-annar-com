@@ -42,14 +42,6 @@ const ThComponent: FC<ThHTMLAttributes<HTMLTableCellElement>> = ({ children }) =
   <th className="px-3 py-1">{children}</th>
 );
 
-const AComponent: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
-  children = "",
-  href = "",
-}) => (
-  <a className="text-black bg-yellow-400 px-2 rounded-full" href={href}>
-    {children}
-  </a>
-);
 
 const generateHeadingComponent = (level: number) => {
   const safeLevel = Math.max(1, Math.min(level, 6));
@@ -63,11 +55,11 @@ const generateHeadingComponent = (level: number) => {
         {createElement(HeadingTag, {}, children)}
         {id !== TOC_ID && (
           <>
-            <div className="grow px-2">
-              <hr className="border-yellow-500" />
+            <div className="grow pl-2 lg:pl-4">
+              <hr className="border-yellow-400" />
             </div>
-            <a className="text-yellow-600" href={`#${TOC_ID}`}>
-              [Back]
+            <a className="text-black bg-yellow-400 rounded-full px-2" href={`#${TOC_ID}`}>
+              Back
             </a>
           </>
         )}
@@ -78,7 +70,6 @@ const generateHeadingComponent = (level: number) => {
 };
 
 const components: Components = {
-  a: AComponent,
   h2: generateHeadingComponent(2),
   h3: generateHeadingComponent(3),
   h4: generateHeadingComponent(4),

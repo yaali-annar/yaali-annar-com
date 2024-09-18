@@ -1,9 +1,8 @@
 import type { FC } from "react";
-import Link from "next/link";
 import NavBar from "@/components/navbar";
-import { getArticles } from "@/utils/article";
 
 import ArticlesContent from './content'
+import { getArticles } from "./engine";
 
 const articles = getArticles();
 
