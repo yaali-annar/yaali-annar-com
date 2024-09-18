@@ -1,27 +1,22 @@
 
 
-import type { ReactElement } from "react";
 import { readdirSync } from "node:fs";
-import type { ParsedUrlQuery } from "node:querystring";
-
 import type { Metadata } from 'next'
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import type { ParsedUrlQuery } from "node:querystring";
+import type { ReactElement } from "react";
+
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 
-
-import rehypeTocWithOptions from "@/components/custom-markdown/rehype-toc";
 import components from "@/components/custom-markdown/components";
 import NavBar from "@/components/navbar";
 import { ARTICLES_DIR } from "@/constants/article";
 
 import { getArticle, type ArticleData } from "../engine";
-
-import Tagalur from '@/articles/tagalur/index.mdx'
-//import { slugToComponent } from "../constants";
+import { slugToComponent } from "../constants";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -65,23 +60,23 @@ const generateMetadata = ({ params }: PageProps): Metadata => {
 
 const mdxOptions = {
   remarkPlugins: [remarkMath, remarkGfm],
-  rehypePlugins: [rehypeSlug, rehypeTocWithOptions, rehypeKatex],
+  rehypePlugins: [rehypeSlug, rehypeKatex],
 }
 
 const Article = async ({ params }: PageProps): Promise<ReactElement | null> => {
   const { slug } = params;
-  // const Component = slugToComponent[slug]
+  const Component = slugToComponent[slug]
 
-  // if (Component !== undefined) {
-  //   return (
-  //     <>
-  //       <NavBar />
-  //       <article className="mx-auto max-w-4xl px-4 my-4">
-  //         <Component />
-  //       </article>
-  //     </>
-  //   );
-  // }
+  if (Component !== undefined) {
+    return (
+      <>
+        <NavBar />
+        <article className="mx-auto max-w-4xl px-4 my-4">
+          <Component />
+        </article>
+      </>
+    );
+  }
 
   const article = await getArticle(params?.slug || '');
 
@@ -89,7 +84,7 @@ const Article = async ({ params }: PageProps): Promise<ReactElement | null> => {
     return null;
   }
 
-  const { data } = article;
+  const { content, data } = article;
 
 
   return (
@@ -97,7 +92,7 @@ const Article = async ({ params }: PageProps): Promise<ReactElement | null> => {
       <NavBar />
       <article className="mx-auto max-w-4xl px-4 my-4">
         <h1>{data.title}</h1>
-        <Tagalur />
+        <MDXRemote source={content} options={{ mdxOptions }} components={components} />
       </article>
     </>
   );
