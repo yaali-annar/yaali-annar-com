@@ -18,9 +18,7 @@ const parseChanges = (changesString: string, emptyMarker: string): Change[] => {
   const variables: Record<string, string> = {};
   const changes: Change[] = [];
 
-  for (let line of lines) {
-    // Trim to remove extra spaces and ignore empty lines or comments
-    line = line.trim();
+  for (const line of lines) {
     if (line === "" || line.startsWith("#")) {
       continue;
     }
@@ -34,6 +32,11 @@ const parseChanges = (changesString: string, emptyMarker: string): Change[] => {
 
     // Parse regex and transformations, replacing variables
     let [regex, stringTransformation] = line.split("\t");
+
+    if (!stringTransformation) {
+      continue;
+    }
+
     const resolvedRegex = regex.replace(/<(\w+)>/g, (_, varName) => {
       // Replace variable placeholder with actual value
       return variables[varName] || `<${varName}>`; // Return unresolved variables as they were if not found

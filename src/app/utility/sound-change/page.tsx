@@ -47,7 +47,15 @@ const SoundChange: FC = () => {
 
   const frequency = useMemo(() => {
     const characterFrequency = countCharacterFrequency(output);
-    return Object.entries(characterFrequency)
+    return Object.entries(characterFrequency).toSorted((a, b) => {
+      if (a[0] < b[0]) {
+        return -1;
+      }
+      if (a[0] > b[0]) {
+        return 1;
+      }
+      return 0
+    })
       .map(([key, value]) => `${key}\t${value}`)
       .join("\n");
   }, [output]);
