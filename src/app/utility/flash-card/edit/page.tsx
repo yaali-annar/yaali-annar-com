@@ -1,14 +1,16 @@
 "use client"
 
-import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react'
 import { DecksProvider } from "../data";
-import Tabs from "../components/tabs";
+
 
 import EditComponent from "./component";
 
 const EditPage = () => (
   <DecksProvider>
-    <EditComponent />
+    <Suspense>
+      <EditComponent />
+    </Suspense>
   </DecksProvider >
 )
 

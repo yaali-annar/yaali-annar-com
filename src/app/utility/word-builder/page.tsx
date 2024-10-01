@@ -40,7 +40,7 @@ const textareaProps = {
 };
 
 const WordBuilder = () => {
-  const methods = useForm<Values>()
+  const methods = useForm<Values>({ defaultValues })
   const [output, setOutput] = useState<string>("");
 
   const onSubmit: SubmitHandler<Values> = ({ changes, emptyMarker, rules }) => {
@@ -85,7 +85,6 @@ const WordBuilder = () => {
               className="w-full max-w-96"
               label="Rules"
               name="rules"
-              defaultValue={defaultValues.rules}
               {...textareaProps}
             />
             <TextArea
@@ -93,7 +92,6 @@ const WordBuilder = () => {
               className="w-full max-w-96"
               label="Changes"
               name="changes"
-              defaultValue={defaultValues.changes}
               {...textareaProps}
             />
           </div>

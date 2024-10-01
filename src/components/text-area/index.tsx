@@ -2,7 +2,6 @@ import type {
   ChangeEvent,
   FC,
   KeyboardEvent,
-  Ref,
   TextareaHTMLAttributes,
 } from "react";
 import { useFormContext } from "react-hook-form";

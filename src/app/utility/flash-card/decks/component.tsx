@@ -8,13 +8,14 @@ import type { Deck } from "../type";
 import Cards from "./cards";
 import Tabs from "../components/tabs";
 
-
 const DecksComponent: FC = () => {
   const searchParams = useSearchParams();
-  const deckId = +(searchParams.get("deck") || "0");
+
   const [decks] = useDecks();
   const pathname = usePathname();
   const router = useRouter();
+
+  const deckId = +(searchParams.get("deck") || "0");
 
   const selectedDeck: Deck | undefined = useMemo(() => {
     if (!deckId) {

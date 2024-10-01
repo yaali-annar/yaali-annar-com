@@ -86,14 +86,12 @@ const SoundChange: FC = () => {
               allowTab
               label="Input"
               name="input"
-              defaultValue={defaultValues.input}
               {...textareaProps}
             />
             <TextArea
               allowTab
               label="Changes"
               name="changes"
-              defaultValue={defaultValues.changes}
               {...textareaProps}
             />
           </div>

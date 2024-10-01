@@ -1,11 +1,15 @@
 "use client"
 
+import { Suspense } from 'react'
+
 import { DecksProvider } from "../data";
 import DecksComponent from "./component";
 
 const DecksPage = () => (
   <DecksProvider>
-    <DecksComponent />
+    <Suspense>
+      <DecksComponent />
+    </Suspense>
   </DecksProvider >
 )
 

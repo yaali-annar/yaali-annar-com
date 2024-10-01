@@ -1,4 +1,4 @@
-import { gcd, lcm } from "@/utils/math";
+import { lcm } from "@/utils/math";
 
 type PhonemeScore = Map<string, number[]>;
 

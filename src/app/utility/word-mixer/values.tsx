@@ -1,4 +1,4 @@
-import SoundChange from "../sound-change/page"
+
 
 const source = `nigr	hitam
 blaŋk	putih

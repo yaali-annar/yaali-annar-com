@@ -1,4 +1,5 @@
-import { useEffect, useState, type FC } from "react";
+import { useState } from "react";
+import type { FC } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
