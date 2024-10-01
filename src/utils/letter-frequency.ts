@@ -1,13 +1,15 @@
 interface CountOptions {
   wordListMode?: boolean;
-  polygraphs?: string[];
+  multigraphs?: string[];
 }
 
 const countCharacterFrequency = (
   input: string,
-  { wordListMode = false, polygraphs = [] }: CountOptions = {}
+  { wordListMode = false, multigraphs = [] }: CountOptions = {}
 ) => {
-  const sortedPolygraphs = [...polygraphs].sort((a, b) => b.length - a.length);
+  const sortedMultigraphs = [...multigraphs].sort(
+    (a, b) => b.length - a.length
+  );
   const frequency: Record<string, number> = {};
   const lines = input.split(/[\n\r+]/);
 
@@ -21,20 +23,20 @@ const countCharacterFrequency = (
     return { word, wordFreq: Number(wordFreqString) || 1 };
   };
 
-  // Count polygraphs
-  const countPolygraphs = (lineParam: string, wordFreq: number) => {
+  // Count multigraphs
+  const countMultigraphs = (lineParam: string, wordFreq: number) => {
     let line = lineParam;
-    for (const polygraph of sortedPolygraphs) {
-      const polygraphRegex = new RegExp(polygraph, "g");
-      const occurrences = (line.match(polygraphRegex) || []).length;
+    for (const multigraph of sortedMultigraphs) {
+      const multigraphRegex = new RegExp(multigraph, "g");
+      const occurrences = (line.match(multigraphRegex) || []).length;
 
       if (occurrences === 0) {
         continue;
       }
 
-      const count = frequency[polygraph] || 0;
-      frequency[polygraph] = count + wordFreq * occurrences;
-      line = line.replace(polygraphRegex, "");
+      const count = frequency[multigraph] || 0;
+      frequency[multigraph] = count + wordFreq * occurrences;
+      line = line.replace(multigraphRegex, "");
     }
 
     return line;
@@ -44,8 +46,8 @@ const countCharacterFrequency = (
   for (const line of lines) {
     const { word, wordFreq } = parseLine(line);
 
-    // Count polygraphs and remove them from the line
-    const remainingLine = countPolygraphs(word, wordFreq);
+    // Count multigraphs and remove them from the line
+    const remainingLine = countMultigraphs(word, wordFreq);
 
     // Count remaining individual characters
     for (const char of remainingLine) {

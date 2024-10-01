@@ -33,7 +33,7 @@ const textareaProps = {
 };
 
 const SoundChange: FC = () => {
-  const methods = useForm<Values>()
+  const methods = useForm<Values>({ defaultValues })
   const [output, setOutput] = useState<string>("");
 
   const onSubmit: SubmitHandler<Values> = ({ changes, emptyMarker, input }) => {
@@ -47,7 +47,8 @@ const SoundChange: FC = () => {
 
   const frequency = useMemo(() => {
     const characterFrequency = countCharacterFrequency(output);
-    return Object.entries(characterFrequency).toSorted((a, b) => {
+    const characterFrequencyEntries = Object.entries(characterFrequency)
+    characterFrequencyEntries.sort((a, b) => {
       if (a[0] < b[0]) {
         return -1;
       }
@@ -56,6 +57,8 @@ const SoundChange: FC = () => {
       }
       return 0
     })
+
+    return characterFrequencyEntries
       .map(([key, value]) => `${key}\t${value}`)
       .join("\n");
   }, [output]);
@@ -83,14 +86,12 @@ const SoundChange: FC = () => {
               allowTab
               label="Input"
               name="input"
-              defaultValue={defaultValues.input}
               {...textareaProps}
             />
             <TextArea
               allowTab
               label="Changes"
               name="changes"
-              defaultValue={defaultValues.changes}
               {...textareaProps}
             />
           </div>

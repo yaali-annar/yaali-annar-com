@@ -3,7 +3,6 @@ import {
   isValidElement,
 } from "react";
 import type {
-  AnchorHTMLAttributes,
   FC,
   HTMLAttributes,
   TableHTMLAttributes,

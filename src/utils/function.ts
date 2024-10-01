@@ -1,7 +1,9 @@
+import type { KeyboardEvent, MouseEventHandler } from "react";
+
 type KeyMapping = string[];
 type AccessibleProps = {
-  onClick: () => void;
-  onKeyPress: (e: React.KeyboardEvent) => void;
+  onClick: MouseEventHandler;
+  onKeyPress: (e: KeyboardEvent) => void;
   tabIndex: number;
   role: string;
 };
@@ -12,7 +14,8 @@ const createAccessibleProps = (
 ): AccessibleProps => {
   return {
     onClick: handler,
-    onKeyPress: (e: React.KeyboardEvent) => {
+    onKeyPress: (e: KeyboardEvent) => {
+      e.preventDefault();
       if (keyMapping.includes(e.key)) {
         handler();
       }

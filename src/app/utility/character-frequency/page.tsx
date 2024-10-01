@@ -13,7 +13,7 @@ import TextInput from "@/components/text-input";
 interface Values {
   input: string,
   wordListMode: boolean,
-  polygraphs: string
+  multigraphs: string
 }
 
 const textAreaProps = { cols: 40, rows: 20 }
@@ -23,8 +23,8 @@ const CharacterFrequency = () => {
 
   const [output, setOutput] = useState<string>("");
 
-  const onSubmit: SubmitHandler<Values> = ({ input, wordListMode, polygraphs }) => {
-    const frequency = countCharacterFrequency(input, { wordListMode, polygraphs: polygraphs.split(/ +/) });
+  const onSubmit: SubmitHandler<Values> = ({ input, wordListMode, multigraphs }) => {
+    const frequency = countCharacterFrequency(input, { wordListMode, multigraphs: multigraphs.split(/ +/) });
 
     const formattedOutput = Object.entries(frequency)
       .sort(([, countA], [, countB]) => countB - countA)
@@ -60,7 +60,7 @@ const CharacterFrequency = () => {
           </div>
           <div className="flex flex-col gap-4 lg:gap-6">
             <CheckBox name="wordListMode" label="Word list mode" description="Provide a word list with frequency" />
-            <TextInput name="polygraphs" label="Polygraphs:" description="Separate with spaces" />
+            <TextInput name="multigraphs" label="Multigraphs:" description="Separate with spaces" />
             <input
               type="submit"
               value="Calculate Frequency"
