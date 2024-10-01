@@ -1,5 +1,5 @@
 "use client"
 
-import Page from "./add/page"
+import Page from "./decks/page"
 
 export default Page
