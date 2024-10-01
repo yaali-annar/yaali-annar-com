@@ -47,7 +47,8 @@ const SoundChange: FC = () => {
 
   const frequency = useMemo(() => {
     const characterFrequency = countCharacterFrequency(output);
-    return Object.entries(characterFrequency).toSorted((a, b) => {
+    const characterFrequencyEntries = Object.entries(characterFrequency)
+    characterFrequencyEntries.sort((a, b) => {
       if (a[0] < b[0]) {
         return -1;
       }
@@ -56,6 +57,8 @@ const SoundChange: FC = () => {
       }
       return 0
     })
+
+    return characterFrequencyEntries
       .map(([key, value]) => `${key}\t${value}`)
       .join("\n");
   }, [output]);
