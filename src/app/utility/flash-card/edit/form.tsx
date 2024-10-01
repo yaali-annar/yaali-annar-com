@@ -8,6 +8,7 @@ import TextInput from "@/components/text-input";
 
 import { useDecks } from "../data";
 import type { Card, Deck, FormValues } from "../type";
+import CheckBox from "@/components/check-box";
 
 interface EditFormProps {
   deck: Deck;
@@ -27,8 +28,9 @@ const EditForm: FC<EditFormProps> = ({ deck: selectedDeck }) => {
 
   const methods = useForm<FormValues>({
     defaultValues: {
+      cards: cardString,
+      isEncoded: false,
       name: selectedDeck.name,
-      cards: cardString
     }
   })
 
@@ -53,6 +55,7 @@ const EditForm: FC<EditFormProps> = ({ deck: selectedDeck }) => {
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
         <TextInput label="Name" name="name" />
+        <CheckBox label="Is Encoded" name="isEncoded" />
         <TextArea allowTab label="Cards" name="cards" rows={10} />
         <input
           type="submit"

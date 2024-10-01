@@ -10,7 +10,7 @@ interface CheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-const CheckBox: FC<CheckBoxProps> = ({ allowTab, description, name, label, ...props }) => {
+const CheckBox: FC<CheckBoxProps> = ({ allowTab, description, name, label }) => {
   const { register } = useFormContext();
   const registeredProps = name ? register(name) : {};
   return (

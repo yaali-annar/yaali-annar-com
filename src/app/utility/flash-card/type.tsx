@@ -11,8 +11,9 @@ interface Deck {
 }
 
 interface FormValues {
-  name: string,
   cards: string,
+  isEncoded: boolean,
+  name: string,
 }
 
 type TabName = 'decks' | 'add' | 'edit';
