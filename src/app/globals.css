@@ -71,7 +71,7 @@ main {
 }
 
 select {
-  @apply bg-black text-yellow-400 p-4 rounded border border-yellow-400;
+  @apply bg-black text-yellow-400 p-1 lg:p-2 rounded border border-yellow-400;
 }
 
 .btn {
@@ -80,6 +80,10 @@ select {
 
 .btn-primary {
   @apply bg-yellow-400 text-black;
+}
+
+.btn-secondary {
+  @apply border border-yellow-400;
 }
 
 .katex-display {

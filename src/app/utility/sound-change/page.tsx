@@ -33,7 +33,7 @@ const textareaProps = {
 };
 
 const SoundChange: FC = () => {
-  const methods = useForm<Values>()
+  const methods = useForm<Values>({ defaultValues })
   const [output, setOutput] = useState<string>("");
 
   const onSubmit: SubmitHandler<Values> = ({ changes, emptyMarker, input }) => {

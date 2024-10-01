@@ -10,8 +10,8 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const TextInput: FC<TextInputProps> = ({ description, name, label, ...props }) => {
-  const { register } = useFormContext();
-  const registeredProps = name ? register(name) : {};
+  const formContext = useFormContext();
+  const registeredProps = (formContext && name) ? formContext.register(name) : {};
   return (
     <div className="flex flex-col gap-1 lg:gap-2">
       {label && <label htmlFor={name} className="text-base lg:text-lg">{label} </label>}

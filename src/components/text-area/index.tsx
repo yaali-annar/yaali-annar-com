@@ -14,7 +14,7 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const TextArea: FC<TextAreaProps> = ({ allowTab, className = '', name, label, ...props }) => {
-  const { register } = useFormContext(); // retrieve all hook methods
+  const formContext = useFormContext(); // retrieve all hook methods
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Tab" && allowTab) {
       event.preventDefault(); // Prevent the default focus change
@@ -42,7 +42,7 @@ const TextArea: FC<TextAreaProps> = ({ allowTab, className = '', name, label, ..
       }
     }
   };
-  const registeredProps = name ? register(name) : {};
+  const registeredProps = (name && formContext) ? formContext.register(name) : {};
   return (
     <div className={`flex flex-col gap-1 lg:gap-2 ${className}`} >
       <label className="text-base lg:text-lg" htmlFor={name}>{label}</label>
