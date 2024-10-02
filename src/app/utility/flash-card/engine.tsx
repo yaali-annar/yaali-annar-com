@@ -1,7 +1,8 @@
 import createPersistedStateContext from "@/app/context/persisted-state";
 import { decodeData, encodeData } from "@/utils/codec";
+import type { UseFormReturn } from "react-hook-form";
 import { entryKey } from "./data";
-import type { Card, Deck } from "./type";
+import type { Card, Deck, FormValues } from "./type";
 
 const getRandomNumbers = (max: number, amount = 3): number[] => {
   const availableNumbers = Array.from({ length: max }, (_, i) => i);
@@ -32,6 +33,16 @@ const stringifyCards = (cards: Card[], isEncoded: boolean): string => {
     return encodeData(cards);
   }
   return cards.map(({ question, answer, score }) => [question, answer, score].join("\t")).join("\n")
+}
+
+const switchCardFormat = (methods: UseFormReturn<FormValues>, isEncoded: boolean) => {
+  try {
+    const cardsString = methods.getValues("cards");
+    const cards = parseCardsString(cardsString, !isEncoded);
+    methods.setValue("cards", stringifyCards(cards, isEncoded));
+  } catch {
+    methods.setValue("isEncoded", !isEncoded);
+  }
 }
 
 const { PersistedStateProvider: DecksProvider, usePersistedStateContext } =
@@ -66,4 +77,4 @@ const useDecks = () => {
   return { addDeck, decks, deleteDeck, editDeck }
 }
 
-export { DecksProvider, getRandomNumbers, parseCardsString, stringifyCards, useDecks }
+export { DecksProvider, getRandomNumbers, parseCardsString, stringifyCards, switchCardFormat, useDecks }

@@ -7,11 +7,10 @@ import type { SubmitHandler } from "react-hook-form";
 import CheckBox from "@/components/check-box";
 import TextArea from "@/components/text-area";
 import TextInput from "@/components/text-input";
-import { decodeData } from "@/utils/codec";
 
 import { cardsExample } from "../data";
-import { useDecks } from "../engine";
-import type { Card, FormValues } from "../type";
+import { parseCardsString, switchCardFormat, useDecks } from "../engine";
+import type { FormValues } from "../type";
 
 const defaultValues: FormValues = {
   cards: cardsExample,
@@ -33,20 +32,10 @@ const AddComponent: FC = () => {
     if (selectedDeck) {
       return;
     }
-
-    let cards: Card[] = [];
-
-    if (isEncoded) {
-      cards = decodeData<Card[]>(cardsString)
-    } else {
-      cards = cardsString.split(/[\n\r]/).map((line) => {
-        const [question, answer, scoreString] = line.split(/\t/);
-        return { question, answer, score: +scoreString };
-      });
-    }
-
-    const ids = decks.map((deck) => deck.id || 0);
+    const cards = parseCardsString(cardsString, isEncoded);
     addDeck({ cards, name })
+    methods.setValue("cards", '');
+    methods.setValue("name", '');
   };
 
   return (
@@ -59,7 +48,7 @@ const AddComponent: FC = () => {
       </p>
       <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
         <TextInput label="Name" name="name" />
-        <CheckBox label="Is Encoded" name="isEncoded" />
+        <CheckBox label="Is Encoded" name="isEncoded" onChange={async (event) => switchCardFormat(methods, event.target.checked)} />
         <TextArea allowTab label="Cards" name="cards" rows={10} />
         <input
           type="submit"

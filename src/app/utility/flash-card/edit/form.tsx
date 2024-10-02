@@ -1,22 +1,23 @@
-import { useRouter } from "next/navigation";
-import { type FC, useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { type FC, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 
+import CheckBox from "@/components/check-box";
 import TextArea from "@/components/text-area";
 import TextInput from "@/components/text-input";
 
-import CheckBox from "@/components/check-box";
-import { decodeData, encodeData } from "@/utils/codec";
-import { parseCardsString, stringifyCards, useDecks } from "../engine";
-import type { Card, Deck, FormValues } from "../type";
+import { parseCardsString, stringifyCards, switchCardFormat, useDecks } from "../engine";
+import type { Deck, FormValues } from "../type";
 
 interface EditFormProps {
   deck: Deck;
 }
 
 const EditForm: FC<EditFormProps> = ({ deck: selectedDeck }) => {
+  const pathname = usePathname();
   const router = useRouter();
+
   const { editDeck } = useDecks();
 
   const cardsString = useMemo(() => {
@@ -37,20 +38,14 @@ const EditForm: FC<EditFormProps> = ({ deck: selectedDeck }) => {
   const onSubmit: SubmitHandler<FormValues> = ({ name, cards: cardsString, isEncoded }) => {
     const cards = parseCardsString(cardsString, isEncoded)
     editDeck({ ...selectedDeck, name, cards });
-    router.refresh();
+    router.push(pathname)
   };
-
-  const switchCardFormat = (isEncoded: boolean) => {
-    const cardsString = methods.getValues("cards");
-    const cards = parseCardsString(cardsString, !isEncoded);
-    methods.setValue("cards", stringifyCards(cards, isEncoded));
-  }
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
         <TextInput label="Name" name="name" />
-        <CheckBox label="Is Encoded" name="isEncoded" onChange={async (event) => switchCardFormat(event.target.checked)} />
+        <CheckBox label="Is Encoded" name="isEncoded" onChange={async (event) => switchCardFormat(methods, event.target.checked)} />
         <TextArea allowTab label="Cards" name="cards" rows={10} />
         <input
           type="submit"
