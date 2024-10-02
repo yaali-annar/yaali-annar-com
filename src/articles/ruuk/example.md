@@ -1,14 +1,11 @@
 ```
-Roav lan ak sos gugul ar gaut dzar gupa do'ats abal
-@roav lan ak sos gugul ar gaut dzar gupa do'ats abal
-@world all ERG one speak(ABS) GEN method and same word have
-Now the whole world has one language and the same words.
+@kul g'alam ak  šaop g'iglom       hošit  ha  mat'a g'oin   bah'oŝ abh'ol
+@all world  ERG one  understanding method and same  meaning part   have
 ```
 
 ```
-Biuþ ap sian tutur ot sian ak Sinar ot laka ku'uk anot dzar tuð puug imotar
-@biuþ ap sian tutur ot sian ak Sinar ot laka ku'uk anot dzar tuð puug im<ot>ar
-@east to people move(ABS) at people ERG Sinar at flat land find and that place stay<LOC>
+@ŝar'ok
+@east   ALL people move(ABS) LOC people ERG Sinar LOC flat land find and that place stay<LOC>
 As people moved eastward, they found a plain in Shinar and settled there.
 ```
 

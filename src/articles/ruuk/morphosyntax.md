@@ -74,11 +74,27 @@ Maik akkal
 The water is drunk
 ```
 
-Causative on transitive noun is formed by the causative postposition "gat"
+Causative on transitive verb is formed by the causative postposition "gat"
 
 ```glos
-nin gat kalob ak maar akkal
+Nin gat kalob ak maar akkal
+@nin gat kalob ak maar akkal
+@I CAU dog ERG healthy.thing eat
+I feed the dog healthy things.
 ```
+
+Literally "I caused the dog to eat healthy thing."
+
+Such causative sentence is still valid without ergative noun.
+
+```glos
+Nin gat šak `iglom
+@nin gat šok `iglom
+@I CAU he know
+I spoke about him
+```
+
+Literally "I causes (someone) to know about him."
 
 ### Alignment Morphemes
 
@@ -103,7 +119,7 @@ The verb form is derived by switching the first consonant and vowel.
 
 | Word    | Meaning                  |
 | ------- | ------------------------ |
-| aklakon | to turn someone into dog |
+| aklakob | to turn someone into dog |
 | ahlakak | to move something        |
 | akkakal | to consume (as an actor) |
 
@@ -116,9 +132,7 @@ Maik il kalob akkakal
 The dog drinks water
 ```
 
-While -il- can be used as an infix, it has the same meaning in transitive verbs and is usually only used for emphasis.
-
-- kakilal = kakal > food, drink, fuel.
+While "kalakob" means "someone who turn other people into dogs" the word for "someone who is turned into a dog" is just "kalob". There is no distinction in ruuk between someone who is always a dog and someone who was not a dog before.
 
 The locative -ot is similar to the preposition in, at.
 
@@ -164,7 +178,3 @@ Likewise, the infix can be used in noun as well.
 
 - kat'ulob > someone who can be a dog.
 - kagulob > someone who must be a dog (someone who is definitely a dog).
-
-And the infix can be put together with the voices.
-
-- kat'ulilob > someone who can be turned into a dog

@@ -12,7 +12,7 @@ Spatial cases:
 
 | Case     | Morpheme |
 | -------- | -------- |
-| Locative | uk       |
+| Locative | ot       |
 | Allative | ar       |
 | Ablative | tik      |
 
@@ -22,7 +22,7 @@ Other cases
 | ------------ | -------- |
 | Causative    | gat      |
 | Benefactive  | sat      |
-| Instrumental | os       |
+| Instrumental | us       |
 
 ### Pronouns
 
@@ -30,6 +30,6 @@ There's no number distinction in pronouns, just like in nouns.
 
 | Pronoun    | Morpheme |
 | ---------- | -------- |
-| 1st Person | nik      |
-| 2nd Person | kat      |
-| 3rd Person | šus      |
+| 1st Person | nin      |
+| 2nd Person | kok      |
+| 3rd Person | šuk      |
