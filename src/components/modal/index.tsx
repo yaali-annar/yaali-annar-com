@@ -15,16 +15,16 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({ isOpen, onClose, title, chil
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="border border-yellow-400 bg-black rounded w-11/12 p-4 lg:p-6 relative">
+      <div className="border border-yellow-400 bg-black rounded p-4 lg:p-6 relative space-y-4 lg:space-y-6">
 
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-bold">{title}</h2>
-          <Button secondary className='rounded-full px-2' onClick={onClose}>
+          <Button secondary className='rounded-full' onClick={onClose}>
             &times;
           </Button>
         </div>
 
-        <div className="mt-4">
+        <div>
           {children}
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client"
 
-import { DecksProvider } from "../data";
 import Tabs from "../components/tabs";
+import { DecksProvider } from "../engine";
 
 import AddComponent from "./component";
 

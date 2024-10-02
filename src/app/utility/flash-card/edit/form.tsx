@@ -1,14 +1,15 @@
-import { useMemo, type FC } from "react";
+import { useRouter } from "next/navigation";
+import { type FC, useEffect, useMemo, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
 
 import TextArea from "@/components/text-area";
 import TextInput from "@/components/text-input";
 
-import { useDecks } from "../data";
-import type { Card, Deck, FormValues } from "../type";
 import CheckBox from "@/components/check-box";
+import { decodeData, encodeData } from "@/utils/codec";
+import { parseCardsString, stringifyCards, useDecks } from "../engine";
+import type { Card, Deck, FormValues } from "../type";
 
 interface EditFormProps {
   deck: Deck;
@@ -16,46 +17,40 @@ interface EditFormProps {
 
 const EditForm: FC<EditFormProps> = ({ deck: selectedDeck }) => {
   const router = useRouter();
+  const { editDeck } = useDecks();
 
-  const [decks, setDecks] = useDecks();
-
-  const cardString = useMemo(() => {
+  const cardsString = useMemo(() => {
     if (!selectedDeck) {
       return ''
     }
-    return selectedDeck.cards.map(({ question, answer, score }) => [question, answer, score].join("\t")).join("\n")
+    return stringifyCards(selectedDeck.cards, false);
   }, [selectedDeck])
 
   const methods = useForm<FormValues>({
     defaultValues: {
-      cards: cardString,
+      cards: cardsString,
       isEncoded: false,
       name: selectedDeck.name,
     }
   })
 
-  const onSubmit: SubmitHandler<FormValues> = ({ name, cards: cardsString }) => {
-    const cards: Card[] = cardsString.split(/[\n\r]/).map(line => {
-      const [question, answer, scoreString] = line.split(/\t/);
-      return { question, answer, score: +scoreString }
-    })
-
-    const newDecks = [...decks].map(deck => {
-      if (deck.id === selectedDeck.id) {
-        return { ...selectedDeck, name, cards }
-      }
-      return deck
-    })
-
-    setDecks(newDecks);
+  const onSubmit: SubmitHandler<FormValues> = ({ name, cards: cardsString, isEncoded }) => {
+    const cards = parseCardsString(cardsString, isEncoded)
+    editDeck({ ...selectedDeck, name, cards });
     router.refresh();
   };
+
+  const switchCardFormat = (isEncoded: boolean) => {
+    const cardsString = methods.getValues("cards");
+    const cards = parseCardsString(cardsString, !isEncoded);
+    methods.setValue("cards", stringifyCards(cards, isEncoded));
+  }
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
         <TextInput label="Name" name="name" />
-        <CheckBox label="Is Encoded" name="isEncoded" />
+        <CheckBox label="Is Encoded" name="isEncoded" onChange={async (event) => switchCardFormat(event.target.checked)} />
         <TextArea allowTab label="Cards" name="cards" rows={10} />
         <input
           type="submit"

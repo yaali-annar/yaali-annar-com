@@ -1,17 +1,16 @@
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import type { FC } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
 
-import GrowingText from "@/components/growing-text";
 import Button from "@/components/button";
-import { classNames } from "@/utils/string";
+import GrowingText from "@/components/growing-text";
 import { shuffleArray } from "@/utils/array";
+import { classNames } from "@/utils/string";
 
+import DeleteConfirmation from "../components/confirm-delete";
+import { getRandomNumbers, useDecks } from "../engine";
 import type { Deck } from "../type"
-import { getRandomNumbers } from "../engine";
-import { useDecks } from "../data";
-
 
 interface CardsProps {
   deck: Deck;
@@ -25,17 +24,18 @@ interface Answer {
 const { floor, random, sqrt } = Math;
 
 const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
-  const [decks, setDecks] = useDecks();
+  const { editDeck } = useDecks();
 
   const pathname = usePathname();
   const router = useRouter();
 
-  const { cards, id, name } = currentDeck;
-
+  const [deletionId, setDeletionId] = useState(0);
+  const [options, setOptions] = useState<Answer[]>([]);
+  const [questionIndex, setQuestionIndex] = useState(-1);
   const [shouldContinue, setShouldContinue] = useState(false);
   const [started, setStarted] = useState(false);
-  const [questionIndex, setQuestionIndex] = useState(-1);
-  const [options, setOptions] = useState<Answer[]>([]);
+
+  const { cards, name } = currentDeck;
 
   const selectCard = () => {
     cards.sort((a, b) => a.score - b.score);
@@ -64,15 +64,7 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
   const stop = () => {
     setOptions([]);
     setStarted(false);
-
-    const newDecks = decks.map(deck => {
-      if (deck.id === id) {
-        return { ...deck, cards };
-      }
-      return deck;
-    })
-
-    setDecks(newDecks);
+    editDeck({ ...currentDeck, cards })
     router.push(pathname);
   }
 
@@ -97,9 +89,16 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
     <div className="space-y-4 lg:space-y-6">
       {!started && <>
         <Link href={pathname}>Go Back</Link>
-        <hr />
       </>}
-      <h2>{name}</h2>
+      <div className="flex justify-between items-center">
+        <h2>{name}</h2>
+        {!started && <Button secondary type="button" onClick={() => setDeletionId(currentDeck.id)}>Delete</Button>
+        }
+      </div>
+      <hr />
+      {!started &&
+        <Button secondary type="button" onClick={start}>Start</Button>
+      }
       {started && (
         <>
           <div className="border border-yellow-400 rounded flex justify-center py-16">
@@ -131,14 +130,13 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
         </>
       )}
       <div className="flex justify-between">
-        {started ?
-          <Button secondary type="button" onClick={stop}>Stop</Button> :
-          <Button secondary type="button" onClick={start}>Start</Button>
-        }
-        {shouldContinue &&
-          <Button secondary type="button" onClick={next}>Next</Button>
-        }
+        {started && <Button secondary type="button" onClick={stop}>Stop</Button>}
+        {shouldContinue && <Button secondary type="button" onClick={next}>Next</Button>}
       </div>
+      <DeleteConfirmation
+        {...{ deletionId, setDeletionId }}
+        afterDeletion={() => router.push(pathname)}
+      />
     </div>
   )
 };

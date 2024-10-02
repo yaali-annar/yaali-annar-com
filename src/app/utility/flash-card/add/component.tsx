@@ -3,15 +3,15 @@
 import type { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
 
+import CheckBox from "@/components/check-box";
 import TextArea from "@/components/text-area";
 import TextInput from "@/components/text-input";
-
-import { cardsExample, useDecks } from "../data";
-import type { Card, FormValues } from "../type";
-import CheckBox from "@/components/check-box";
 import { decodeData } from "@/utils/codec";
+
+import { cardsExample } from "../data";
+import { useDecks } from "../engine";
+import type { Card, FormValues } from "../type";
 
 const defaultValues: FormValues = {
   cards: cardsExample,
@@ -20,8 +20,8 @@ const defaultValues: FormValues = {
 };
 
 const AddComponent: FC = () => {
-  const router = useRouter();
-  const [decks, setDecks] = useDecks();
+
+  const { decks, addDeck } = useDecks();
   const methods = useForm<FormValues>({ defaultValues });
 
   const onSubmit: SubmitHandler<FormValues> = ({
@@ -46,11 +46,7 @@ const AddComponent: FC = () => {
     }
 
     const ids = decks.map((deck) => deck.id || 0);
-    const id = Math.max(decks.length, ...ids) + 1;
-
-    decks.push({ id, cards, name });
-    setDecks(decks);
-    router.push(`/utility/flash-card/decks?deck=${id}`);
+    addDeck({ cards, name })
   };
 
   return (
