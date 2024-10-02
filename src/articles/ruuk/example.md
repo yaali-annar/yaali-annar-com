@@ -1,30 +1,35 @@
-```
-@kul g'alam ak  šaop g'iglom       hošit  ha  mat'a g'oin   bah'oŝ abh'ol
-@all world  ERG one  understanding method and same  meaning part   have
-```
-
-```
-@ŝar'ok
-@east   ALL people move(ABS) LOC people ERG Sinar LOC flat land find and that place stay<LOC>
-As people moved eastward, they found a plain in Shinar and settled there.
+```gloss
+Rašma k'uat ot g'alam ak sašad g'ilusom ha ŧolpu hoŝit us g'ilmu kinaš abh'ol.
+@rašma k'uat ot g'alam ak sašad g'ilusom ha ŧolpu hoŝit us g'ilmu kinaš abh`ol
+@far time LOC world ERG many languages and different way INST know(MOD) people have
+A long time ago, the world had many languages and people who speak in different ways.
 ```
 
+```gloss
+Šuk ak fis ŧoŧro ot šuk ak rabo onkoŝ baor ugod ha šuk ak ŧo kuotun ot mamdin obh'or.
+@šuk ak fis ŧoŧro ot šuk ak rabo onkoŝ baor ugod ha šuk ak ŧo kuotun ot mamdin obh'or
+@they ERG self be.scattered(ABS) LOC they ERG wide empty land find and they ERG that place LOC settle(ABS) choose
+As they spread out, some found a wide open plain and choose to settle there.
+
 ```
-Por ap por udak, "Luþ ak haan ar taul 'oksa'an". Þuk śośuv ap tu'ip ot por ak haan ar taul abal.
-@por ap por udak, "luþ ak haan ar taul ok<sa>an". þuk śośuv ap tu'ip ot por ak haan ar taul abal
-@they to they say, "we ERG building GEN material make<NEC>". this activity GEN frontside at they ERG building GEN material have
-They said to each other, "Come, let’s make building material." They then have building materials.
-``
 
-Then they said, "Come, let us build ourselves a city, with a tower that reaches to the heavens, so that we may make a name for ourselves. Otherwise we will be scattered over the face of the whole earth."
-
-But the Lord came down to see the city and the tower the people were building.
-
-The Lord said, "If as one people speaking the same language they have begun to do this, then nothing they plan to do will be impossible for them."
-
-"Come, let us go down and confuse their language so they will not understand each other.""
-
-So the Lord scattered them from there over all the earth, and they stopped building the city.
-
-That is why it was called Babel. Because there the Lord confused the language of the whole world. From there the Lord scattered them over the face of the whole earth.
+```gloss
+Šuk gat šuk ak g'alam, "Nin ak nin bibir sat h'osno kigar bahl'o madin obguon.
+@šuk gat šuk ak g'alam ," nin ak nin bibir sat h'osno kigar bahakl'o madin obguon
+@they CAU they ERG know ," we ERG we protect(ABS) BEN strong wall have(ACT)(MOD) city build(NEC)
+They said to one another, "Let’s build ourselves a city with a strong wall for our protection.
 ```
+
+```gloss
+Ŧo madin bobon gat nin il tobakh'u ŧolpu kinaš ak nin lo 'oŝbak ."
+@ŧo madin bobon gat nin il tobakh'u ŧolpu kinaš ak nin lo 'oŝbak ."
+@this city build(ABS) CAU we PAT follow(ACT)(MOD) other people ERG we NEG attack ."
+by building this city we won’t be attacked by other people who come after us."
+```
+
+Soon, other groups came, and they couldn’t understand each other because of their different languages. Misunderstandings grew, and war broke out among them.
+So, we came down to see the destruction they had caused.
+We said, "If they all spoke the same language, they wouldn’t fight. If they work together, nothing will be impossible for them."
+So, we decided, "Let’s make them speak the same language, so they can understand each other."
+And from that moment, their languages were united, and the fighting stopped.
+The place was called Unity because it was there that we brought the languages of the world together and made peace.

@@ -33,3 +33,4 @@ There's no number distinction in pronouns, just like in nouns.
 | 1st Person | nin      |
 | 2nd Person | kok      |
 | 3rd Person | šuk      |
+| Reflexive  | fis      |
