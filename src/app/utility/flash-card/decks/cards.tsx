@@ -82,7 +82,7 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
     }))
 
     setShouldContinue(correct);
-    cards[questionIndex].score += (correct ? 1 : -1);
+    cards[questionIndex].score += (correct ? 1 : -2);
   }
 
   return (
