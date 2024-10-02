@@ -1,17 +1,17 @@
-import { useMemo, type FC } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { type FC, useMemo } from "react";
 
 import Select from "@/components/select";
 
-import { useDecks } from "../data";
+import Tabs from "../components/tabs";
+import { useDecks } from "../engine";
 import type { Deck } from "../type";
 import Cards from "./cards";
-import Tabs from "../components/tabs";
 
 const DecksComponent: FC = () => {
   const searchParams = useSearchParams();
 
-  const [decks] = useDecks();
+  const { decks } = useDecks();
   const pathname = usePathname();
   const router = useRouter();
 

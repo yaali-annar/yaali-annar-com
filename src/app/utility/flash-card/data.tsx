@@ -1,6 +1,3 @@
-import createPersistedStateContext from "@/app/context/persisted-state"
-import type { Deck } from "./type";
-
 const cardsExample =
   `Question 1	Answer 1	0
 Question 2	Answer 2	0
@@ -13,14 +10,4 @@ Question 8	Answer 8	0`
 
 const entryKey = 'flash-card-decks'
 
-const { PersistedStateProvider: DecksProvider, usePersistedStateContext } = createPersistedStateContext<Deck[]>(
-  entryKey,
-  []
-);
-
-const useDecks = (): [Deck[], (decks: Deck[]) => void] => {
-  const { state, setPersistedState } = usePersistedStateContext();
-  return [state, setPersistedState]
-}
-
-export { DecksProvider, useDecks, cardsExample, entryKey }
+export { cardsExample, entryKey }

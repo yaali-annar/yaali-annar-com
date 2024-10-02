@@ -1,3 +1,5 @@
+import { decodeData, encodeData } from "./codec";
+
 /**
  * Store data in localStorage as Base64 encoded JSON using Generics
  * @param key - The key under which to store the data
@@ -6,10 +8,7 @@
  */
 const storeData = <T>(key: string, value: T): void => {
   try {
-    const json = JSON.stringify(value);
-    const uriComponent = encodeURIComponent(json);
-    const base64 = btoa(uriComponent);
-    localStorage.setItem(key, base64);
+    localStorage.setItem(key, encodeData(value));
   } catch (err) {
     throw new Error(`Failed to store data: ${(err as Error).message}`);
   }
@@ -29,9 +28,7 @@ const retrieveData = <T>(key: string): T => {
   }
 
   try {
-    const uriComponent = atob(base64);
-    const json = decodeURIComponent(uriComponent);
-    return JSON.parse(json) as T;
+    return decodeData<T>(base64);
   } catch (err) {
     throw new Error(
       `Failed to retrieve or parse data for key: ${key} - ${

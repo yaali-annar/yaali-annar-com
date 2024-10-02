@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react'
 
-import { DecksProvider } from "../data";
+import { DecksProvider } from "../engine";
 import DecksComponent from "./component";
 
 const DecksPage = () => (
