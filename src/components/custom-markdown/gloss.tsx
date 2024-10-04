@@ -25,7 +25,7 @@ const Gloss: FC<GlossProps> = ({ children }) => {
 
     processedLines.push(
       <div
-        className="flex gap-2 lg:gap-4"
+        className="flex flex-wrap gap-2 lg:gap-4"
         key={`flex-${processedLines.length}`}
       >
         {glossContent}
