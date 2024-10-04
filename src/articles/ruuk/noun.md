@@ -23,6 +23,7 @@ Other cases
 | Causative    | gat      |
 | Benefactive  | sat      |
 | Instrumental | us       |
+| Commitative  | m'ah     |
 
 ### Pronouns
 

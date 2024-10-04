@@ -35,6 +35,7 @@ Consider following roots:
 - <ra'al> /ɹaʕal/
 - <'aral> /ʕaɹal/
 
-Lastly, voiced plosive at the end of a word of a syllabl would have short schwa after it.
+Lastly, a schwa might appear between two consonants at a syllable boundary if:
 
--
+- The consonant ends with a voiced plosive, or
+- Both of the consonants are /θ s ɬ ç/
