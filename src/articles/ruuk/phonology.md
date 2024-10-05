@@ -1,5 +1,7 @@
 ## Phonology
 
+### Phonemes
+
 Ruuk has the following consonants.
 
 | Labial | Coronal       | Dorsal      |
@@ -10,13 +12,15 @@ Ruuk has the following consonants.
 |        | θ (ŧ) s ɬ (ś) | ç (š) x (h) |
 |        | ɹ (r) l       |             |
 
-And the vowels are
+And the vowels are:
 
 | Front     | Back          |
 | --------- | ------------- |
 | i ˤi ('i) | u ˤu ('u)     |
 |           | o ˤo ('o)     |
 |           | a (a) ˤa ('a) |
+
+### Phonetics
 
 Phonemically, the pharyngealization is a feature of a vowel. Phonetically, the consonant behind the vowels gets pharyngealized. Consider the pair:
 
@@ -30,12 +34,19 @@ Further, the velar consonants turns into uvular before the pharyngealizing vowel
 
 After a vowel or at the beginning of a word, emphatic becomes a voiced pharygeal fricative:
 
-Consider following roots:
-
 - <ra'al> /ɹaʕal/
 - <'aral> /ʕaɹal/
 
-Lastly, a schwa might appear between two consonants at a syllable boundary if:
+Any vowel can vowel any other vowel, a semivowel /j/ or /w/ can replace one of the vowels or appear between two different vowels.
 
-- The consonant ends with a voiced plosive, or
+|     | i   | u   | o   | a   |
+| --- | --- | --- | --- | --- |
+| i   | iː  | ju  | jo  | ja  |
+| u   | wi  | uː  | wo  | wa  |
+| o   | oj  | ow  | oː  | owa |
+| a   | aj  | aw  | awo | aː  |
+
+A schwa might appear between two consonants at a syllable boundary if:
+
+- The first syllable ends with a voiced plosive, or
 - Both of the consonants are /θ s ɬ ç/

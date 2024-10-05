@@ -64,7 +64,7 @@ Maik il kalob akkakal
 The dog drinks water
 ```
 
-While "kalakob" means "someone who turn other people into dogs" the word for "someone who is turned into a dog" is just "kalob". There is no distinction in ruuk between someone who is always a dog and someone who was not a dog before.
+While "kalakob" means "someone who turn other people into dogs" the word for "someone who is turned into a dog" is just "kalob". This distinction can be confered with the dak'a modifier. The phrase <dak'a kalob> means "someone who started being a dog" or "someone who become a dog".
 
 The locative -ot is similar to the preposition in, at.
 

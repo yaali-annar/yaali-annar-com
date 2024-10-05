@@ -1,7 +1,5 @@
 ## Syntax
 
-### Alignment
-
 Ruuk is an ergative language with a verb-last syntax.
 
 ```gloss
@@ -14,24 +12,15 @@ The dog sleeps
 The postposition "ak" is the ergative case marker.
 
 ```gloss
-Kalob ak maik akkal
-@kalob ak maik akkal
+Kalob ak pirih akkal
+@kalob ak pirih akkal
 @dog ERG water consume
 The dog drinks water
 ```
 
-Modifier comes before a noun:
-
-- šunu kalob > sleeping dog
-- kakla pirih > fruit that's eaten
-
-Modifier can also has their own parameters.
-
-- kalob ak kakla pirih > fruit that's eaten by the dog
-
 ### Valency
 
-All intransitive verbs in spoken loti are labile verbs (also called ergative verbs). Adding an ergative turns the verb into a causative.
+All intransitive verbs in ruuk are labile verbs (also called ergative verbs). Adding an ergative turns the verb into a causative.
 
 ```gloss
 S'abar aŧub
@@ -50,26 +39,26 @@ The fire melts the ice
 Likewise, without the ergative noun, the sentence is similar to passive voice.
 
 ```gloss
-Maik akkal
-@maik akkal
-@water consume
-The water is drunk
+Pirih akkal
+@pirih akkal
+@fruit consume
+The fruit is drunk
 ```
 
 Causative on transitive verb is formed by the causative postposition "gat"
 
-```glos
-Nin gat kalob ak maar akkal
-@nin gat kalob ak maar akkal
-@I CAU dog ERG healthy.thing eat
-I feed the dog healthy things.
+```gloss
+Nin gat kalob ak pirih akkal
+@nin gat kalob ak pirih akkal
+@I CAU dog ERG fruit consume
+I feed the dog fruits.
 ```
 
-Literally "I caused the dog to eat healthy thing."
+Literally "I caused the dog to eat fruit."
 
 Such causative sentence is still valid without ergative noun.
 
-```glos
+```gloss
 Nin gat šak `iglom
 @nin gat šok `iglom
 @I CAU he know
