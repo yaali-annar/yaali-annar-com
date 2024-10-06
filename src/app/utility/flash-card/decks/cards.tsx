@@ -128,7 +128,7 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
             <GrowingText text={cards[questionIndex][shouldReverse ? 'answer' : 'question']} />
           </div>
           <div><small>Score: {cards[questionIndex].score}</small></div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 gap-4 lg:gap-6">
             {options.map(({ index, selected }) => (
               <Button
                 secondary={!selected}
@@ -145,7 +145,11 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
                   }
                 }}
               >
-                {cards[index][shouldReverse ? 'question' : 'answer']}
+                <GrowingText
+                  maxPercentage={10}
+                  minPercentage={4}
+                  text={cards[index][shouldReverse ? 'question' : 'answer']}
+                />
               </Button>
             ))}
           </div>
