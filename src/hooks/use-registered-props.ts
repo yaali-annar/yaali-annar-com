@@ -8,18 +8,19 @@ interface UseRegisteredPropsParameters<T> {
 
 const useRegisteredProps = <T>({
   name,
-  onChange = async () => {},
+  onChange: onChangeFromProps = async () => {},
 }: UseRegisteredPropsParameters<T>) => {
   const formContext = useFormContext();
 
   if (!formContext || !name) {
-    return { onChange };
+    return { onChange: onChangeFromProps };
   }
 
   const registeredProps = formContext.register(name);
+  const { onChange } = registeredProps;
 
   registeredProps.onChange = async (event) => {
-    await registeredProps.onChange(event);
+    await onChange(event);
     onChange(event as ChangeEvent<T>);
   };
 

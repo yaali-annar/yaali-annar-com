@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface GrowingTextProps {
+  maxPercentage?: number;
+  minPercentage?: number;
   text: string;
 }
 
-const GrowingText: React.FC<GrowingTextProps> = ({ text }) => {
+const GrowingText: React.FC<GrowingTextProps> = ({ maxPercentage = 15, minPercentage = 5, text }) => {
   const [fontSize, setFontSize] = useState('16px'); // Default font size
 
   useEffect(() => {
@@ -12,9 +14,6 @@ const GrowingText: React.FC<GrowingTextProps> = ({ text }) => {
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       const minDimension = Math.min(viewportWidth, viewportHeight);
-
-      const maxPercentage = 15;
-      const minPercentage = 5;
 
       const maxLength = 20;
       const percentage = text.length > maxLength
@@ -30,7 +29,7 @@ const GrowingText: React.FC<GrowingTextProps> = ({ text }) => {
     window.addEventListener('resize', calculateFontSize);
 
     return () => window.removeEventListener('resize', calculateFontSize);
-  }, [text]);
+  }, [maxPercentage, minPercentage, text]);
 
   return (
     <div style={{ fontSize: fontSize, transition: 'font-size 0.3s ease' }}>
