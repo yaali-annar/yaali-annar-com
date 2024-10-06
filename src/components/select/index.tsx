@@ -1,8 +1,8 @@
+import useRegisteredProps from "@/hooks/use-registered-props";
 import type {
   FC,
   SelectHTMLAttributes,
 } from "react";
-import { useFormContext } from "react-hook-form";
 
 interface Option {
   value: number | string
@@ -15,9 +15,8 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: Option[];
 }
 
-const Select: FC<SelectProps> = ({ description, label, name, options, ...props }) => {
-  const formContext = useFormContext();
-  const registeredProps = (formContext && name) ? formContext.register(name) : {};
+const Select: FC<SelectProps> = ({ description, label, name, onChange, options, ...props }) => {
+  const registeredProps = useRegisteredProps({ onChange, name })
   return (
     <div className="flex flex-col gap-1 lg:gap-2">
       {label && <label htmlFor={name} className="text-base lg:text-lg">{label} </label>}
