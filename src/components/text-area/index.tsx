@@ -1,10 +1,10 @@
+import useRegisteredProps from "@/hooks/use-registered-props";
 import type {
   ChangeEvent,
   FC,
   KeyboardEvent,
   TextareaHTMLAttributes,
 } from "react";
-import { useFormContext } from "react-hook-form";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -13,7 +13,6 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const TextArea: FC<TextAreaProps> = ({ allowTab, className = '', name, label, ...props }) => {
-  const formContext = useFormContext(); // retrieve all hook methods
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Tab" && allowTab) {
       event.preventDefault(); // Prevent the default focus change
@@ -41,7 +40,9 @@ const TextArea: FC<TextAreaProps> = ({ allowTab, className = '', name, label, ..
       }
     }
   };
-  const registeredProps = (name && formContext) ? formContext.register(name) : {};
+
+  const registeredProps = useRegisteredProps({ onChange: props.onChange, name });
+
   return (
     <div className={`flex flex-col gap-1 lg:gap-2 ${className}`} >
       <label className="text-base lg:text-lg" htmlFor={name}>{label}</label>

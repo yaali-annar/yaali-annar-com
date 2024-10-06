@@ -8,6 +8,7 @@ import GrowingText from "@/components/growing-text";
 import { shuffleArray } from "@/utils/array";
 import { classNames } from "@/utils/string";
 
+import Select from "@/components/select";
 import DeleteConfirmation from "../components/confirm-delete";
 import { getRandomNumbers, useDecks } from "../engine";
 import type { Deck } from "../type"
@@ -21,7 +22,16 @@ interface Answer {
   selected: boolean;
 }
 
+type Mode = 'normal' | 'reversed' | 'random';
+
 const { floor, random, sqrt } = Math;
+
+const modes = [
+  { value: 'normal', text: 'Normal' },
+  { value: 'reversed', text: 'Reversed' },
+  { value: 'random', text: 'Random' }
+
+]
 
 const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
   const { editDeck } = useDecks();
@@ -30,9 +40,11 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
   const router = useRouter();
 
   const [deletionId, setDeletionId] = useState(0);
+  const [mode, setMode] = useState<Mode>('normal');
   const [options, setOptions] = useState<Answer[]>([]);
   const [questionIndex, setQuestionIndex] = useState(-1);
   const [shouldContinue, setShouldContinue] = useState(false);
+  const [shouldReverse, setShouldReverse] = useState(false)
   const [started, setStarted] = useState(false);
 
   const { cards, name } = currentDeck;
@@ -54,6 +66,13 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
 
     setQuestionIndex(newQuestionIndex);
     setOptions(newOptions)
+    setShouldReverse(() => {
+      switch (mode) {
+        case "normal": return false;
+        case "reversed": return true;
+        case "random": return Math.random() > 0.5;
+      }
+    });
   }
 
   const start = () => {
@@ -92,8 +111,12 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
       </>}
       <div className="flex justify-between items-center">
         <h2>{name}</h2>
-        {!started && <Button secondary type="button" onClick={() => setDeletionId(currentDeck.id)}>Delete</Button>
+        {!started &&
+          <Button secondary type="button" onClick={() => setDeletionId(currentDeck.id)}>
+            Delete
+          </Button>
         }
+        {started && <Select options={modes} value={mode} onChange={event => setMode(event.target.value as Mode)} />}
       </div>
       <hr />
       {!started &&
@@ -102,7 +125,7 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
       {started && (
         <>
           <div className="border border-yellow-400 rounded flex justify-center py-16">
-            <GrowingText text={cards[questionIndex].question} />
+            <GrowingText text={cards[questionIndex][shouldReverse ? 'answer' : 'question']} />
           </div>
           <div><small>Score: {cards[questionIndex].score}</small></div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
@@ -122,7 +145,7 @@ const Cards: FC<CardsProps> = ({ deck: currentDeck }) => {
                   }
                 }}
               >
-                {cards[index].answer}
+                {cards[index][shouldReverse ? 'question' : 'answer']}
               </Button>
             ))}
           </div>
