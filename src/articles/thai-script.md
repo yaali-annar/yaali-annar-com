@@ -5,6 +5,8 @@ tags:
   - language
 ---
 
+Note: By "Modern Thai" this article means Central Thai or Standard Thai.
+
 # Consonants
 
 Thai consonants in writing are divided into "High," "Medium," and "Low" classes. This classification affects the tone each consonant carries. By listing each consonant’s (initial) sound and its class, we can see some trends: none of the initial sounds have all three versions.
@@ -50,7 +52,7 @@ Next, we have the initials with only low versions:
 
 These are all liquids.
 
-# Historical Sound Change
+## Historical Sound Change
 
 The division of Thai consonants into High, Medium, and Low tone classes becomes clearer when we examine their historical pronunciation, which combined elements of Sukhothai and Sanskrit phonetics. Here’s a breakdown of the consonant sounds based on their articulation categories in Sukhothai and their original Pali or Sanskrit pronunciation:
 
@@ -74,45 +76,7 @@ Additionally, some consonants from Pali and Sanskrit merged in Sukhothai Thai:
 - Retroflex and dental consonants merged, which explains why modern Thai has four low "th" sounds, originating from /ɖ, ɖʱ, d, dʱ/.
 - The three fricatives /ɕ, ʂ, and s/ merged into a single /s/ sound in modern Thai.
 
-# Vowels
-
-Thai have nine vowels each with long and short version.
-
-| Core Sound | Short Open | Short Closed | Long Open | Long Closed |
-| ---------- | ---------- | ------------ | --------- | ----------- |
-| a          | ◌ะ, ◌      | ◌ั◌          | ◌า        | ◌า◌         |
-| i          | ◌ิ         | ◌ิ◌          | ◌ี        | ◌ี◌         |
-| ɯ          | ◌ึ         | ◌ึ◌          | ◌ือ       | ◌ื◌         |
-| u          | ◌ุ         | ◌ุ◌          | ◌ู        | ◌ู◌         |
-| e          | เ◌ะ        | เ◌็◌         | เ◌        | เ◌◌         |
-| ɛ          | แ◌ะ        | แ◌็◌         | แ◌        | แ◌◌         |
-| o          | โ◌ะ        | ◌◌           | โ◌        | โ◌◌         |
-| ɔ          | เ◌าะ       | ◌็อ◌         | ◌อ        | ◌อ◌         |
-| ɤ          | เ◌อะ       | -            | เ◌อ       | เ◌ิ◌        |
-
-The inherent vowel in open syllable is /a/ and in closed syllable is /o/.
-
-To write /a/ in closed syllable ◌ั (Mai Han Akat) is used. Conversely, the construct โ◌ะ is used to write /o/ in open syllable.
-
-Some of the vowels, such as /e ɛ ɔ/ are "inherently" long. Thus ะ (Nom Nang) is needed to "close" the syllable and the sign itself can be interpreted as a glotal stop. In closed syllable ◌็ (Mai Taikhu) is used to shorten the vowel.
-
-Lastly \*◌อะ is not used for short /ɔ/ in open syllable. But rather, เ◌าะ is used. In particular เ◌า with out Nom Nang is /aw/.
-
-The diphtongs are:
-
-| Core Sound | Short Open | Short Closed | Long Open | Long Closed |
-| ---------- | ---------- | ------------ | --------- | ----------- |
-| ia         | เ◌ียะ      | -            | เ◌ีย      | เ◌ีย◌       |
-| ɯa         | เ◌ือะ      | -            | เ◌ือ      | เ◌ือ◌       |
-| ua         | ◌ัวะ       | -            | ◌ัว       | ◌ว◌         |
-| aw         | -          | เ◌า          | -         | ◌าว         |
-| aj         | -          | ไ◌, ใ◌       | -         | ◌าย         |
-
-Like in monophtongs, Nom Nang is used to shorten a diphtong. ใ◌ is historically /aɯ/ But has been turned into aj.
-
-Note how the construct ◌ัว is not used for "aw", because that would read "-wa".
-
-# Consonant Frequency
+## Consonant Frequency
 
 Some consonants appear more frequently than others in modern Thai, with certain historical sounds like /x/ and /ɣ/ disappearing entirely. Using a corpus such as [this one](https://wortschatz.uni-leipzig.de/en/download/Thai), we can determine the frequency of each consonant in Thai script. Here are the frequencies for initials that have multiple characters:
 
@@ -131,6 +95,46 @@ Some consonants appear more frequently than others in modern Thai, with certain 
 
 Note that ญ and ย are sometimes considered distinct due to ญ carrying an /n/ sound in the final position.
 
+# Vowels
+
+Thai has nine vowels, each with a long and short version.
+
+| Core Sound | Short Open | Short Closed | Long Open | Long Closed |
+| ---------- | ---------- | ------------ | --------- | ----------- |
+| a          | ◌ะ, ◌      | ◌ั◌          | ◌า        | ◌า◌         |
+| i          | ◌ิ         | ◌ิ◌          | ◌ี        | ◌ี◌         |
+| ɯ          | ◌ึ         | ◌ึ◌          | ◌ือ       | ◌ื◌         |
+| u          | ◌ุ         | ◌ุ◌          | ◌ู        | ◌ู◌         |
+| e          | เ◌ะ        | เ◌็◌         | เ◌        | เ◌◌         |
+| ɛ          | แ◌ะ        | แ◌็◌         | แ◌        | แ◌◌         |
+| o          | โ◌ะ        | ◌◌           | โ◌        | โ◌◌         |
+| ɔ          | เ◌าะ       | ◌็อ◌         | ◌อ        | ◌อ◌         |
+| ɤ          | เ◌อะ       | -            | เ◌อ       | เ◌ิ◌        |
+
+In open syllables, the inherent vowel is /a/, while in closed syllables, it is /o/.
+
+To represent /a/ in closed syllables, ◌ั (Mai Han Akat) is used. Conversely, the structure โ◌ะ is used to write /o/ in open syllables.
+
+Certain vowels, like /e/, /ɛ/, and /ɔ/, are inherently long. The ะ (Nom Nang) marker is needed to "close" the syllable, often implying a glottal stop. In closed syllables, ◌็ (Mai Taikhu) is used to shorten these inherently long vowels.
+
+_Note_: The symbol _◌อะ_ is not used for short /ɔ/ in open syllables; instead, เ◌าะ represents short /ɔ/, and เ◌า without Nom Nang signifies the sound /aw/.
+
+## Diphthongs
+
+The following table summarizes the main diphthongs:
+
+| Core Sound | Short Open | Short Closed | Long Open | Long Closed |
+| ---------- | ---------- | ------------ | --------- | ----------- |
+| ia         | เ◌ียะ      | -            | เ◌ีย      | เ◌ีย◌       |
+| ɯa         | เ◌ือะ      | -            | เ◌ือ      | เ◌ือ◌       |
+| ua         | ◌ัวะ       | -            | ◌ัว       | ◌ว◌         |
+| aw         | -          | เ◌า          | -         | ◌าว         |
+| aj         | -          | ไ◌, ใ◌       | -         | ◌าย         |
+
+As with monophthongs, Nom Nang is used to shorten diphthongs. Historically, ใ◌ represented /aɯ/ but has since shifted to /aj/.
+
+_Note_: The combination ◌ัว is not used for the sound "aw" because it would read as "-wa" in Thai.
+
 # Tone Split
 
 The [Proto-Tai language](https://en.wikipedia.org/wiki/Proto-Tai_language) originally had three phonemic tones. While Tone D is sometimes classified as a fourth tone, it only occurs in "dead" syllables, which are syllables ending with an obstruent sound (e.g., stops or fricatives).
@@ -144,7 +148,7 @@ The Thai script includes four tone markers, but in modern usage, only the first 
 | Mai Tri      | 0.69%     |
 | Mai Chattawa | 0.28%     |
 
-Originally, Mai Ek and Mai Tho corresponded to "Low" and "High" tones, respectively. Over time, sound changes led to a tonal split based on the consonant class (Low, Mid, or High) and syllable type. This resulted in modern Thai’s nuanced tone system.
+Originally, Mai Ek and Mai Tho corresponded to "Low" and "High" tones, respectively. Over time, sound changes led to a tonal split based on the consonant class (Low, Mid, or High) and syllable type. This resulted in central Thai’s five tone system.
 
 For live syllables (those with open or sonorant final sounds):
 
