@@ -9,9 +9,11 @@ Note: By "Modern Thai" this article means Central Thai or Standard Thai.
 
 # Consonants
 
-Thai consonants in writing are divided into "High," "Medium," and "Low" classes. This classification affects the tone each consonant carries. By listing each consonant’s (initial) sound and its class, we can see some trends: none of the initial sounds have all three versions.
+Thai consonants in writing are divided into "High," "Medium," and "Low" classes. This classification affects the tone each consonant carries. By categorizing each consonant’s initial sound and its class, we observe certain patterns: None of the consonant initials have all three class versions.
 
-The following are the initials with both high and low versions:
+## Aspirated and Fricatives
+
+The following consonants have both high and low versions.
 
 | Initial | High  | Low     |
 | ------- | ----- | ------- |
@@ -23,9 +25,25 @@ The following are the initials with both high and low versions:
 | ph      | ผ     | พ ภ     |
 | f       | ฝ     | ฟ       |
 
-All of these initials are either aspirated or fricatives.
+## Liquids
 
-Now, let’s look at the initials with only mid versions:
+The following consonants only have low versions by themselves. However, they can be modified to form high-class sounds when written as digraphs with ห (Ho Hip).
+
+| Initial | High  | Low |
+| ------- | ----- | --- |
+| ng      | หง    | ง   |
+| w       | หว    | ว   |
+| n       | หน    | ณ น |
+| m       | หม    | ม   |
+| y       | หญ หย | ญ ย |
+| r       | หร    | ร   |
+| l       | หล    | ล ฬ |
+
+Additionally, **อย** is classified as a Mid consonant.
+
+## Unaspirated Stops
+
+The following consonants are exclusively mid-class.
 
 | Initial | Mid |
 | ------- | --- |
@@ -35,22 +53,6 @@ Now, let’s look at the initials with only mid versions:
 | t       | ฏ ต |
 | b       | บ   |
 | p       | ป   |
-
-All mid-tone initials are stops with no aspiration.
-
-Next, we have the initials with only low versions:
-
-| Initial | Low |
-| ------- | --- |
-| ng      | ง   |
-| w       | ว   |
-| n       | ณ น |
-| m       | ม   |
-| y       | ญ ย |
-| r       | ร   |
-| l       | ล ฬ |
-
-These are all liquids.
 
 ## Historical Sound Change
 
@@ -82,18 +84,18 @@ Some consonants appear more frequently than others in modern Thai, with certain 
 
 | **Reading** | **Frequencies**                            |
 | ----------- | ------------------------------------------ |
-| Low kh      | ค - 4.03%, ฆ - 0.04%                       |
-| Low ch      | ช - 1.87%, ฌ - < 0.01%                     |
-| Low th      | ท - 4.05%, ธ - 0.82%, ฑ - 0.03%, ฒ - 0.07% |
-| Low ph      | พ - 2.69%, ภ - 0.63%                       |
-| High s      | ส - 3.30%, ศ - 1.28%, ษ - 0.62%            |
-| High th     | ถ - 0.63%, ฐ - 0.28%                       |
-| d           | ด - 3.40%, ฎ - 0.08%                       |
-| t           | ต - 3.23%, ฏ - 0.06%                       |
-| n           | น - 10.25%, ณ - 0.62%                      |
-| l           | ล - 3.90%, ฬ - 0.03%                       |
+| Low kh      | ค - 3,89% ฆ - 0,04%                        |
+| Low ch      | ช - 1,86%, ฌ - < 0,01%                     |
+| Low th      | ท - 4,04%, ธ - 0,82%, ฑ - 0,03%, ฒ - 0,08% |
+| Low ph      | พ - 2,67%, ภ - 0,65%                       |
+| High s      | ส - 3,30%, ศ - 1,27%, ษ - 0,63%            |
+| High th     | ถ - 0,66%, ฐ - 0,28%                       |
+| d           | ด - 3,44%, ฎ - 0,12%                       |
+| t           | ต - 3,20%, ฏ - 0,06%                       |
+| n           | น - 10,39%, ณ - 0,63%                      |
+| l           | ล - 3,94%, ฬ - 0,03%                       |
 
-Note that ญ and ย are sometimes considered distinct due to ญ carrying an /n/ sound in the final position.
+ญ and ย are sometimes considered distinct due to ญ carrying an /n/ sound in the final position.
 
 # Vowels
 
@@ -117,7 +119,7 @@ To represent /a/ in closed syllables, ◌ั (Mai Han Akat) is used. Conversely,
 
 Certain vowels, like /e/, /ɛ/, and /ɔ/, are inherently long. The ะ (Nom Nang) marker is needed to "close" the syllable, often implying a glottal stop. In closed syllables, ◌็ (Mai Taikhu) is used to shorten these inherently long vowels.
 
-_Note_: The symbol _◌อะ_ is not used for short /ɔ/ in open syllables; instead, เ◌าะ represents short /ɔ/, and เ◌า without Nom Nang signifies the sound /aw/.
+The symbol ◌อะ is not used for short /ɔ/ in open syllables; instead, เ◌าะ represents short /ɔ/, and เ◌า without Nom Nang signifies the sound /aw/.
 
 ## Diphthongs
 
@@ -133,28 +135,30 @@ The following table summarizes the main diphthongs:
 
 As with monophthongs, Nom Nang is used to shorten diphthongs. Historically, ใ◌ represented /aɯ/ but has since shifted to /aj/.
 
-_Note_: The combination ◌ัว is not used for the sound "aw" because it would read as "-wa" in Thai.
+The combination ◌ัว is not used for the sound "aw" because it would read as "-wa" in Thai.
 
 # Tone Split
 
-The [Proto-Tai language](https://en.wikipedia.org/wiki/Proto-Tai_language) originally had three phonemic tones. While Tone D is sometimes classified as a fourth tone, it only occurs in "dead" syllables, which are syllables ending with an obstruent sound (e.g., stops or fricatives).
+The [Proto-Tai language](https://en.wikipedia.org/wiki/Proto-Tai_language) originally had three phonemic tones, with an additional "Tone D" that sometimes appears as a fourth tone. However, Tone D only occurs in "dead" syllables, those that end with an obstruent sound (e.g., stops or fricatives).
 
-The Thai script includes four tone markers, but in modern usage, only the first two tones, Mai Ek and Mai Tho, are commonly used.
+The Thai script includes four tone markers, but only the first two markers Mai Ek and Mai Tho, are commonly used.
 
 | Tone         | Frequency |
 | ------------ | --------- |
-| Mai Ek       | 56.31%    |
-| Mai Tho      | 42.72%    |
-| Mai Tri      | 0.69%     |
-| Mai Chattawa | 0.28%     |
+| Mai Ek       | 56.13%    |
+| Mai Tho      | 42.92%    |
+| Mai Tri      | 0.68%     |
+| Mai Chattawa | 0.27%     |
 
 Originally, Mai Ek and Mai Tho corresponded to "Low" and "High" tones, respectively. Over time, sound changes led to a tonal split based on the consonant class (Low, Mid, or High) and syllable type. This resulted in central Thai’s five tone system.
 
-For live syllables (those with open or sonorant final sounds):
+## Tone Split for Live Syllables
 
-- In the original mid tone, Low and Mid initials remain mid, while High initials become rising.
-- In the original low tone, Mid and High consonants retain the low tone, while Low consonants become falling.
-- In the original high tone, Low consonants stay high, while Mid and High consonants shift to falling.
+Live syllables (those with open or sonorant final sounds) exhibit a tonal shift based on the original Proto-Tai tone and the consonant class:
+
+- **Original Low Tone**: Mid and High consonants retain a low tone, while Low consonants shift to falling.
+- **Original Mid Tone**: Low and Mid consonants remain mid-tone, while High consonants become rising.
+- **Original High Tone**: Low consonants remain high, while Mid and High consonants shift to falling.
 
 | Syllable / Tone Mark | Low     | Mid     | High    |
 | -------------------- | ------- | ------- | ------- |
@@ -162,24 +166,30 @@ For live syllables (those with open or sonorant final sounds):
 | Live syllable (Mid)  | mid     | mid     | rising  |
 | Mai Tho (High)       | high    | falling | falling |
 
-Examples:
+This structure lets us rerpesent of the five tones in live syllables by using the correct combination of consonant class and tone marker:
 
-| Syllable / Tone Mark | Low          | Mid        | High       |
-| -------------------- | ------------ | ---------- | ---------- |
-| Mai Ek (Low)         | พี่ - phì    | ไก่ - kài  | ไข่ - khài |
-| Live syllable (Mid)  | ควาย - khway | กา - kaa   | ขา - khǎa  |
-| Mai Tho (High)       | ม้า - máa    | เก้า - kâu | ฆ่า - khâa |
+| Sound | Low | Falling | Mid | Rising | High |
+| ----- | --- | ------- | --- | ------ | ---- |
+| kha   | ข่  | ค่ ข้   | ค   | ข      | ค้   |
+| na    | หน่ | น่ หน้  | น   | หน     | น้   |
+| ka    | ก่  | ก้      | ก   | ก๋     | ก๊   |
 
-For dead syllables (those with obstruent endings), the tone split is simpler, as there is no differentiation between Mid and High initials:
+We can see how Mai Tri and Mai Chattawa are used with mid-class consonants to create rising and high tones, as they lack these tones otherwise.
+
+## Tone Split for Dead Syllables
+
+In dead syllables (those with obstruent endings), the tone split is simpler. There is no tonal distinction between Mid and High consonants, leading to only three possible tones in dead syllables:
 
 | Syllable / Tone Mark | Low     | Mid / High |
 | -------------------- | ------- | ---------- |
 | Dead Short           | high    | low        |
 | Dead Long            | falling | low        |
 
-Examples:
+Thus, dead syllables have only three tones:
 
-| Syllable / Tone Mark | Low         | Mid / High  |
-| -------------------- | ----------- | ----------- |
-| Dead Short           | นก - nók    | ตก - tòk    |
-| Dead Long            | นอก - naôok | ตอก - taòok |
+| Sound | Low | Falling | High |
+| ----- | --- | ------- | ---- |
+| khok  | ขก  |         | คก   |
+| khook | โขก | โคก     |      |
+
+In summary, the combination of consonant class, tone marker, and syllable type allows Thai to maintain a rich tonal system that emerged from the simpler Proto-Tai tones.
