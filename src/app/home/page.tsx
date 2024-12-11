@@ -17,7 +17,7 @@ const links: LinkData[] = [
     Icon: Telegram
   },
   {
-    href: "https://bsky.app/profile/yaaliannar.bsky.social",
+    href: "https://bsky.app/profile/yaaliannar.com",
     Icon: Bluesky
   },
   {
