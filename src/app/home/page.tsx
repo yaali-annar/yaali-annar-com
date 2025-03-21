@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import Article from "@/components/icon/article";
 import Bluesky from "@/components/icon/bluesky";
+import Furaffinity from "@/components/icon/furaffinity";
 import Reference from "@/components/icon/reference";
 import Telegram from "@/components/icon/telegram";
 import Utility from "@/components/icon/utility";
@@ -19,6 +20,10 @@ const links: LinkData[] = [
   {
     href: "https://bsky.app/profile/yaaliannar.com",
     Icon: Bluesky
+  },
+  {
+    href: "https://www.furaffinity.net/user/yaaliannar",
+    Icon: Furaffinity
   },
   {
     href: "/reference",
